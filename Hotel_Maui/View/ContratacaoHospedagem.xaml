@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Hotel_Maui.View.ContratacaoHospedagem"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="Contratação Hospedagem"
+    BackgroundColor="#ff556b2f">
+
+    <ContentPage.Content>
+        <Frame
+            Margin="20"
+            BackgroundColor="#F5F5DC"
+            BorderColor="DarkGreen"
+            VerticalOptions="CenterAndExpand">
+            <Grid
+                x:Name="G1"
+                ColumnDefinitions="*,*,*,*"
+                ColumnSpacing="1"
+                RowDefinitions="*,*,*,0.7*,2*,*"
+                RowSpacing="1">
+
+
+                <Label
+                    Grid.Row="0"
+                    Grid.RowSpan="1"
+                    Grid.ColumnSpan="4"
+                    Style="{StaticResource TextoTotal}"
+                    Text="Calculo Diaria" />
+
+                <!--  Label Adultos  -->
+                <Label
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="2"
+                    Style="{StaticResource LabelsCampos}"
+                    Text="Adulto:" />
+
+                <Label
+                    x:Name="lbl_qnt_adulto"
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    BindingContext="{x:Reference StepperAdulto}"
+                    Style="{StaticResource LabelsValoresStepper}"
+                    Text="{Binding Value}" />
+
+                <Stepper
+                    x:Name="StepperAdulto"
+                    Grid.Row="1"
+                    Grid.Column="2"
+                    Grid.ColumnSpan="2"
+                    HorizontalOptions="Start"
+                    Increment="1"
+                    Maximum="10"
+                    Minimum="0"
+                    VerticalOptions="Center" />
+
+                <!--  Label Crianca  -->
+                <Label
+                    Grid.Row="2"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="2"
+                    Style="{StaticResource LabelsCampos}"
+                    Text="Crianças:" />
+
+                <Label
+                    x:Name="lbl_qnt_Crianca"
+                    Grid.Row="2"
+                    Grid.Column="1"
+                    BindingContext="{x:Reference StepperCrianca}"
+                    Style="{StaticResource LabelsValoresStepper}"
+                    Text="{Binding Value}" />
+
+                <Stepper
+                    x:Name="StepperCrianca"
+                    Grid.Row="2"
+                    Grid.Column="2"
+                    Grid.ColumnSpan="2"
+                    Increment="1"
+                    Maximum="5"
+                    Minimum="0"
+                    VerticalOptions="Center" />
+
+                <!--  Lista de quartos disponivel  -->
+                <Picker
+                    x:Name="pck_quarto"
+                    Title="Qual Acomodação?"
+                    Grid.Row="3"
+                    Grid.ColumnSpan="4"
+                    FontSize="36"
+                    HorizontalTextAlignment="Center"
+                    ItemDisplayBinding="{Binding Descricao}" />
+
+
+                <!--  Dafinicao data entrada/saida  -->
+
+                <Grid
+                    x:Name="G2"
+                    Grid.Row="4"
+                    Grid.ColumnSpan="4"
+                    ColumnDefinitions="auto,auto,auto,*"
+                    RowDefinitions="auto,auto,auto,auto,*">
+
+                    <Label
+                        Grid.Row="0"
+                        Grid.Column="2"
+                        Grid.ColumnSpan="2"
+                        HorizontalTextAlignment="Center"
+                        Style="{StaticResource LabelsCampos}"
+                        Text="Check-In:" />
+
+                    <TimePicker
+                        x:Name="dtpck_hora_checkin"
+                        Grid.Row="1"
+                        Grid.Column="3"
+                        Style="{StaticResource TimePickerTextoHr}" />
+
+
+                    <DatePicker
+                        x:Name="dtpck_data_checkin"
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="2"
+                        DateSelected="dtpck_data_checkin_DateSelected"
+                        Format="dd/MM/yyyy"
+                        Style="{StaticResource TextoDatePicker}"
+                        TextColor="Black" />
+
+                    <Label
+                        Grid.Row="2"
+                        Grid.Column="2"
+                        Style="{StaticResource LabelsCampos}"
+                        Text="Check-Out:" />
+
+                    <DatePicker
+                        x:Name="dtpck_data_checkout"
+                        Grid.Row="3"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="1"
+                        Format="dd/MM/yyyy"
+                        Style="{StaticResource TextoDatePicker}"
+                        TextColor="Black" />
+
+                    <TimePicker
+                        x:Name="dtpck_hora_checkOut"
+                        Grid.Row="3"
+                        Grid.Column="3"
+                        Style="{StaticResource TimePickerTextoHr}" />
+
+                </Grid>
+                <Button
+                    Grid.Row="5"
+                    Grid.ColumnSpan="4"
+                    BackgroundColor="#ff556b2f"
+                    Clicked="BtnCalcular_Clicked"
+                    CornerRadius="50"
+                    FontSize="Title"
+                    Text="Calcular Minha Estadia"
+                    TextColor="White"
+                    VerticalOptions="CenterAndExpand" />
+
+            </Grid>
+        </Frame>
+    </ContentPage.Content>
+</ContentPage>

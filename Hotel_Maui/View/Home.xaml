@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Hotel_Maui.View.Home"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="Home"
+    BackgroundColor="#ff556b2f">
+
+
+    <ContentPage.Content>
+        <Frame
+            Margin="20"
+            BackgroundColor="#F5F5DC"
+            BorderColor="DarkGreen"
+            VerticalOptions="CenterAndExpand">
+            <Grid
+                x:Name="G3"
+                ColumnDefinitions="*,*,*,*"
+                ColumnSpacing="1"
+                RowDefinitions="*,*,*,0.7*,2*,*"
+                RowSpacing="1"
+                
+                />
+        </Frame>
+    </ContentPage.Content>
+
+
+</ContentPage>

@@ -34,6 +34,6 @@ public partial class App : Application
     {
         InitializeComponent();
         Thread.CurrentThread.CurrentCulture = new CultureInfo("pt-BR");
-        MainPage = new NavigationPage(new View.ContratacaoHospedagem());
+        MainPage = new View.Menu();
     }
 }

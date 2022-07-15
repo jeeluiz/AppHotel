@@ -456,7 +456,14 @@
         <Setter Property="HorizontalOptions" Value="Start" />
         <Setter Property="VerticalOptions" Value="Center" />
         <Setter Property="FontSize" Value="22" />
-        <Setter Property="TextColor" Value="Black"/>
+        <Setter Property="TextColor" Value="Black" />
+    </Style>
+    <Style x:Key="EntryCadastroHospede" TargetType="Entry">
+        <Setter Property="FontSize" Value="22" />
+        <Setter Property="HorizontalTextAlignment" Value="Center" />
+        <Setter Property="TextColor" Value="White" />
+        <Setter Property="BackgroundColor" Value="#ff556b2f" />
+
     </Style>
 
 </ResourceDictionary>

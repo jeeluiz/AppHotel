@@ -141,7 +141,7 @@
                         TextColor="Black" />
 
                     <TimePicker
-                        x:Name="dtpck_hora_checkOut"
+                        x:Name="dtpck_hora_checkout"
                         Grid.Row="3"
                         Grid.Column="3"
                         Style="{StaticResource TimePickerTextoHr}" />

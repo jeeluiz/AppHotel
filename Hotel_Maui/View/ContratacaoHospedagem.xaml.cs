@@ -28,17 +28,17 @@ public partial class ContratacaoHospedagem : ContentPage
 		{
 			int qnt_adultos = Convert.ToInt32(lbl_qnt_adulto.Text);
             int qnt_crianca = Convert.ToInt32(lbl_qnt_Crianca.Text);
-
-			if (qnt_adultos == 0 && qnt_crianca == 0)
+						
+            if (qnt_adultos == 0 && qnt_crianca == 0)
 				throw new Exception("Desculpe, informe pelo menos um adulto.");
 			
 			
 			if (qnt_adultos == 0)
                 throw new Exception("Somente adultos podem alugar quartos");
 			
+			
 			Model.CategoriaQuarto quarto_selecionado = (Model.CategoriaQuarto)pck_quarto.SelectedItem;
-
-			if (quarto_selecionado == null)
+            if (quarto_selecionado == null)
 				throw new Exception("Desculpe, selecione um quarto");
 
 			Model.Hospedagem dados_hospedagem = new Model.Hospedagem()
@@ -52,7 +52,9 @@ public partial class ContratacaoHospedagem : ContentPage
 
 				DataCheckIn = dtpck_data_checkin.Date,
 				DataCheckOut = dtpck_data_checkout.Date,
-			};
+				HoraCheckIn = dtpck_hora_checkin.Time,
+				HoraCheckOut = dtpck_hora_checkout.Time,
+            };
 
 			dados_hospedagem.ValorTotal = dados_hospedagem.CalcularValorEstadia();
 
@@ -79,6 +81,9 @@ public partial class ContratacaoHospedagem : ContentPage
         //12/07/2022 15:40
 
     }
-   
+     async void Button_Cadastro(object sender, EventArgs e)
+    {
+        await Navigation.PopAsync();
+    }
 
 }

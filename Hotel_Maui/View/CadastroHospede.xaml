@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Hotel_Maui.View.CadastroHospede"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="Cadastro Hospede"
+    BackgroundColor="#ff556b2f">
+
+    <ContentPage.Content>
+        <Frame
+            Margin="20"
+            BackgroundColor="#F5F5DC"
+            BorderColor="DarkGreen"
+            VerticalOptions="CenterAndExpand">
+            <Grid
+                x:Name="G4"
+                ColumnDefinitions="*,*,*,*"
+                ColumnSpacing="1"
+                RowDefinitions="auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto"
+                RowSpacing="1">
+
+                <Label
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="4"
+                    Style="{StaticResource TextoTotal}"
+                    Text="Cadastro do Hospede" />
+
+                <Label
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    Grid.ColumnSpan="3"
+                    FontAttributes="Bold"
+                    HorizontalTextAlignment="Center"
+                    Style="{StaticResource LabelsCampos}"
+                    Text="Nome do Hospede" />
+
+                <Entry
+                    x:Name="EntNomeHospede"
+                    Grid.Row="2"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="5"
+                    MaxLength="50"
+                    Style="{StaticResource EntryCadastroHospede}" />
+
+                <Label
+                    Grid.Row="3"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="5"
+                    FontAttributes="Bold"
+                    FontSize="22"
+                    HorizontalOptions="CenterAndExpand"
+                    Text="CPF" />
+
+                <Entry
+                    x:Name="EntryCPF"
+                    Grid.Row="4"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="5"
+                    MaxLength="50"
+                    Style="{StaticResource EntryCadastroHospede}" />
+
+                <Label
+                    Grid.Row="5"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="5"
+                    FontAttributes="Bold"
+                    FontSize="22"
+                    HorizontalOptions="CenterAndExpand"
+                    Text="Cep" />
+
+                <Entry
+                    x:Name="EntryCep"
+                    Grid.Row="6"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="5"
+                    MaxLength="50"
+                    Style="{StaticResource EntryCadastroHospede}" />
+
+                <Label
+                    Grid.Row="7"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="5"
+                    FontAttributes="Bold"
+                    FontSize="22"
+                    HorizontalOptions="CenterAndExpand"
+                    Text="Endereço" />
+
+                <Entry
+                    x:Name="EntryEndereco"
+                    Grid.Row="8"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="5"
+                    MaxLength="50"
+                    Style="{StaticResource EntryCadastroHospede}" />
+
+                <Label
+                    Grid.Row="9"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="5"
+                    FontAttributes="Bold"
+                    FontSize="22"
+                    HorizontalOptions="CenterAndExpand"
+                    Text="Numero/Lougradouro" />
+
+                <Entry
+                    x:Name="EntryNumero/log"
+                    Grid.Row="10"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="5"
+                    MaxLength="50"
+                    Style="{StaticResource EntryCadastroHospede}" />
+
+            </Grid>
+        </Frame>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<FlyoutPage
+    x:Class="Hotel_Maui.View.Menu"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:Hotel_Maui.View"
+    Title="Home"
+    BackgroundColor="#ff556b2f">
+
+    <FlyoutPage.Flyout>
+        <ContentPage
+            Title="Home"
+            BackgroundColor="#ff556b2f"
+            Visual="Default">
+            <StackLayout Spacing="20">
+                <Button Text="Cadastro De Hospede" 
+                        TextColor="Black"
+                        Clicked="Btn_CadastroCliente"/>
+                <Button
+                    Clicked="Button_Cadastro_Quarto"
+                    Text="Cadastro De Hospedagem"
+                    TextColor="Black" />
+
+                <Button Text="Hospedagem" TextColor="Black" />
+            </StackLayout>
+        </ContentPage>
+    </FlyoutPage.Flyout>
+    <FlyoutPage.Detail>
+        <NavigationPage>
+            <x:Arguments>
+                <local:Home />
+            </x:Arguments>
+        </NavigationPage>
+    </FlyoutPage.Detail>
+</FlyoutPage>

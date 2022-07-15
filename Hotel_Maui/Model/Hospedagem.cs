@@ -8,14 +8,15 @@ namespace Hotel_Maui.Model
 {
     public class Hospedagem
     {
+
         public CategoriaQuarto Quarto { get; set; }
         public int QuantidadeAdultos { get; set; }
         public int QuantidadeCrianca { get; set; }
         public int QuantidadeDias { get; set; }
         public DateTime DataCheckIn { get; set; }
         public DateTime DataCheckOut { get; set; }
-        public DateTime HoraCheckIn { get; set; }
-        public DateTime HoraCheckOut { get; set; }
+        public TimeSpan HoraCheckIn { get; set; }
+        public TimeSpan HoraCheckOut { get; set; }
         public double ValorTotal { get; set; }
 
         public static int CalcularTempoEstadia(DateTime checkin,DateTime checkout)

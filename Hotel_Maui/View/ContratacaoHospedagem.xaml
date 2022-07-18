@@ -82,7 +82,7 @@
 
                 <!--  Lista de quartos disponivel  -->
                 <Picker
-                    x:Name="pck_quarto"
+                    x:Name="pckquarto"
                     Title="Qual Acomodação?"
                     Grid.Row="3"
                     Grid.ColumnSpan="4"

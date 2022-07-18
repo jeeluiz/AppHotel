@@ -14,8 +14,12 @@ public partial class Menu : FlyoutPage
     }
     async void Btn_CadastroCliente(object sender, EventArgs e)
     {
-        ((FlyoutPage)App.Current.MainPage).Detail = new NavigationPage(new CadastroHospede());
+        ((FlyoutPage)App.Current.MainPage).Detail = new NavigationPage(new CadastroHospedePage());
 
     }
-    
+
+	private void Btn_Home(object sender, EventArgs e)
+	{
+        ((FlyoutPage)App.Current.MainPage).Detail = new NavigationPage(new Home());
+    }
 }

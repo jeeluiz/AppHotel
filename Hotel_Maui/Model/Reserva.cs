@@ -1,15 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace Hotel_Maui.Model
 {
-    public class Hospedagem
+    public class Reserva 
     {
-
+        [Key]
+        public Guid Id { get; set; }
         public CategoriaQuarto Quarto { get; set; }
+        public CadastroHospede Hospede { get; set; }
         public int QuantidadeAdultos { get; set; }
         public int QuantidadeCrianca { get; set; }
         public int QuantidadeDias { get; set; }

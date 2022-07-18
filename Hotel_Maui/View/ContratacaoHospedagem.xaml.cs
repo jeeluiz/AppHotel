@@ -1,3 +1,6 @@
+using Hotel_Maui.Context;
+using Hotel_Maui.Enums;
+using Hotel_Maui.Model;
 using System.ComponentModel;
 
 namespace Hotel_Maui.View;
@@ -10,7 +13,7 @@ public partial class ContratacaoHospedagem : ContentPage
 		InitializeComponent();
 
 		PropriedadesApp = (App)Application.Current;
-        pck_quarto.ItemsSource = PropriedadesApp.tipos_quartos;
+        pckquarto.ItemsSource = PropriedadesApp.tipos_quartos;
 
 	//Definindo os valores Maximos e minimos  das datas
 	//Cliente nao pode fazer Checkin no passado
@@ -37,18 +40,18 @@ public partial class ContratacaoHospedagem : ContentPage
                 throw new Exception("Somente adultos podem alugar quartos");
 			
 			
-			Model.CategoriaQuarto quarto_selecionado = (Model.CategoriaQuarto)pck_quarto.SelectedItem;
+			Model.CategoriaQuarto quarto_selecionado = (Model.CategoriaQuarto)pckquarto.SelectedItem;
             if (quarto_selecionado == null)
 				throw new Exception("Desculpe, selecione um quarto");
 
-			Model.Hospedagem dados_hospedagem = new Model.Hospedagem()
+			Model.Reserva dados_hospedagem = new Model.Reserva()
 			{
 				Quarto = quarto_selecionado,
 
 				QuantidadeAdultos = qnt_adultos,
 				QuantidadeCrianca = qnt_crianca,
 
-				QuantidadeDias = Model.Hospedagem.CalcularTempoEstadia(dtpck_data_checkin.Date, dtpck_data_checkout.Date),
+				QuantidadeDias = Model.Reserva.CalcularTempoEstadia(dtpck_data_checkin.Date, dtpck_data_checkout.Date),
 
 				DataCheckIn = dtpck_data_checkin.Date,
 				DataCheckOut = dtpck_data_checkout.Date,
@@ -84,6 +87,26 @@ public partial class ContratacaoHospedagem : ContentPage
      async void Button_Cadastro(object sender, EventArgs e)
     {
         await Navigation.PopAsync();
+
+		var reserva = new Reserva()
+		{
+			QuantidadeAdultos = (int)StepperAdulto.Value,
+			QuantidadeCrianca = (int)StepperCrianca.Value,
+			Quarto = (CategoriaQuarto)pckquarto.SelectedItem,
+			HoraCheckIn = dtpck_hora_checkin.Time,
+			HoraCheckOut = dtpck_hora_checkout.Time,
+			DataCheckIn = dtpck_data_checkin.Date,
+			DataCheckOut = dtpck_data_checkout.Date,
+        };
+
+		reserva.ValorTotal = reserva.CalcularValorEstadia();
+
+        using (var meuDbContext = new MeuDbContext())
+        {
+            meuDbContext.Add(reserva);
+
+            await meuDbContext.SaveChangesAsync();
+        }
     }
 
 }

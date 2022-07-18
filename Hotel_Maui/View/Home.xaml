@@ -13,16 +13,77 @@
             BackgroundColor="#F5F5DC"
             BorderColor="DarkGreen"
             VerticalOptions="CenterAndExpand">
-            <Grid
-                x:Name="G3"
-                ColumnDefinitions="*,*,*,*"
-                ColumnSpacing="1"
-                RowDefinitions="*,*,*,0.7*,2*,*"
-                RowSpacing="1"
-                
-                />
+
+            <StackLayout>
+                <StackLayout>
+                    <SearchBar
+                        BackgroundColor="Black"
+                        Keyboard="Telephone"
+                        Placeholder="Busque Por Cpf"
+                        Text="{Binding ParametroBusca}" />
+                    <StackLayout>
+                        <Button
+                            BackgroundColor="Aqua"
+                            Command="{Binding BuscaCpfLista}"
+                            HorizontalOptions="Start"
+                            Text="Buscar"
+                            TextColor="Black" />
+
+                    </StackLayout>
+                </StackLayout>
+                <ListView ItemsSource="{Binding listaReserva}">
+                    <ListView.Header>
+                        <Grid
+                            Padding="20"
+                            ColumnDefinitions="*,*,*"
+                            RowDefinitions="Auto">
+                            <Label
+                                Grid.Row="0"
+                                Grid.Column="0"
+                                Text="Id" />
+                            <Label
+                                Grid.Row="0"
+                                Grid.Column="1"
+                                Text="Nome" />
+                            <Label
+                                Grid.Row="0"
+                                Grid.Column="2"
+                                Text="CPF" />
+                        </Grid>
+
+                    </ListView.Header>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <ViewCell.ContextActions>
+                                    <MenuItem
+                                        Command="{Binding Source={x:Reference Pagina}, Path=BindingContext.AbrirDetalhesAtividade}"
+                                        CommandParameter="{Binding Id}"
+                                        Text="Detalhes" />
+
+                                </ViewCell.ContextActions>
+                                <Grid
+                                    Padding="20"
+                                    ColumnDefinitions="*,*,*"
+                                    RowDefinitions="Auto">
+                                    <Label
+                                        Grid.Row="0"
+                                        Grid.Column="0"
+                                        Text="{Binding Id}" />
+                                    <Label
+                                        Grid.Row="0"
+                                        Grid.Column="1"
+                                        Text="{Binding Nome}" />
+                                    <Label
+                                        Grid.Row="0"
+                                        Grid.Column="2"
+                                        Text="{Binding Cpf}" />
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
         </Frame>
     </ContentPage.Content>
-
-
 </ContentPage>

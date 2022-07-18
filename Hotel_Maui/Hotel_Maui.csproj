@@ -66,17 +66,20 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <PackageReference Include="sqlite-net-pcl" Version="1.7.335" />
+	  <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="6.0.7" />
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Update="View\CadastroHospedePage.xaml.cs">
+	    <DependentUpon>CadastroHospedePage.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="View\Menu.xaml.cs">
 	    <DependentUpon>Menu.xaml</DependentUpon>
 	  </Compile>
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiXaml Update="View\CadastroHospede.xaml">
+	  <MauiXaml Update="View\CadastroHospedePage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="View\ContratacaoHospedagem.xaml">

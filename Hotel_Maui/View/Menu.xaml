@@ -13,15 +13,21 @@
             BackgroundColor="#ff556b2f"
             Visual="Default">
             <StackLayout Spacing="20">
-                <Button Text="Cadastro De Hospede" 
-                        TextColor="Black"
-                        Clicked="Btn_CadastroCliente"/>
+                <Button Text="Home" 
+                        Clicked="Btn_Home"
+                        TextColor="Black" />
+                
+                <Button
+                    Clicked="Btn_CadastroCliente"
+                    Text="Cadastro De Hospede"
+                    TextColor="Black" />
                 <Button
                     Clicked="Button_Cadastro_Quarto"
                     Text="Cadastro De Hospedagem"
                     TextColor="Black" />
 
-                <Button Text="Hospedagem" TextColor="Black" />
+
+
             </StackLayout>
         </ContentPage>
     </FlyoutPage.Flyout>

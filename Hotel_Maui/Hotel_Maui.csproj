@@ -67,11 +67,19 @@
 
 	<ItemGroup>
 	  <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="6.0.7" />
+	  <PackageReference Include="sqlite-net-pcl" Version="1.8.116" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\Hotel.Data\Hotel.Data.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>
 	  <Compile Update="View\CadastroHospedePage.xaml.cs">
 	    <DependentUpon>CadastroHospedePage.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="View\HospedesCadastrados.xaml.cs">
+	    <DependentUpon>HospedesCadastrados.xaml</DependentUpon>
 	  </Compile>
 	  <Compile Update="View\Menu.xaml.cs">
 	    <DependentUpon>Menu.xaml</DependentUpon>
@@ -85,7 +93,7 @@
 	  <MauiXaml Update="View\ContratacaoHospedagem.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="View\Home.xaml">
+	  <MauiXaml Update="View\HospedesCadastrados.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="View\Menu.xaml">

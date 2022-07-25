@@ -1,7 +1,7 @@
-﻿using Hotel_Maui.Enums;
+﻿using Hotel.Data.Enums;
 using System.ComponentModel.DataAnnotations;
 
-namespace Hotel_Maui.Model
+namespace Hotel.Data.Model
 {
     public class CategoriaQuarto
     {

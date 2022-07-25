@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage
-    x:Class="Hotel_Maui.View.Home"
+    x:Class="Hotel_Maui.View.HospedesCadastrados"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    Title="Home"
+    x:Name="Pagina"
+    Title="Hospedes Cadastrados"
     BackgroundColor="#ff556b2f">
 
 
@@ -16,23 +17,28 @@
 
             <StackLayout>
                 <StackLayout>
-                    <SearchBar
-                        BackgroundColor="Black"
-                        Keyboard="Telephone"
+                    <Entry
+                        x:Name="CPFHospede"
+                        BackgroundColor="#363636"
+                        FontSize="Title"
+                        HorizontalTextAlignment="Center"
+                        Keyboard="Numeric"
+                        MaxLength="14"
                         Placeholder="Busque Por Cpf"
-                        Text="{Binding ParametroBusca}" />
+                        TextColor="White" />
                     <StackLayout>
                         <Button
-                            BackgroundColor="Aqua"
-                            Command="{Binding BuscaCpfLista}"
+                            BackgroundColor="#ff556b2f"
+                            Clicked="Buscar_Clicked"
                             HorizontalOptions="Start"
                             Text="Buscar"
                             TextColor="Black" />
 
                     </StackLayout>
                 </StackLayout>
-                <ListView ItemsSource="{Binding listaReserva}">
+                <ListView x:Name="listaReserva" ItemTapped="listaReserva_ItemTapped">
                     <ListView.Header>
+
                         <Grid
                             Padding="20"
                             ColumnDefinitions="*,*,*"
@@ -55,13 +61,6 @@
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
-                                <ViewCell.ContextActions>
-                                    <MenuItem
-                                        Command="{Binding Source={x:Reference Pagina}, Path=BindingContext.AbrirDetalhesAtividade}"
-                                        CommandParameter="{Binding Id}"
-                                        Text="Detalhes" />
-
-                                </ViewCell.ContextActions>
                                 <Grid
                                     Padding="20"
                                     ColumnDefinitions="*,*,*"
@@ -71,13 +70,14 @@
                                         Grid.Column="0"
                                         Text="{Binding Id}" />
                                     <Label
+                                        x:Name="Nome.txt"
                                         Grid.Row="0"
                                         Grid.Column="1"
                                         Text="{Binding Nome}" />
                                     <Label
                                         Grid.Row="0"
                                         Grid.Column="2"
-                                        Text="{Binding Cpf}" />
+                                        Text="{Binding CPF}" />
                                 </Grid>
                             </ViewCell>
                         </DataTemplate>

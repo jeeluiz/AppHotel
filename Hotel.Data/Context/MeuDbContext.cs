@@ -1,7 +1,7 @@
-﻿using Hotel_Maui.Model;
+﻿using Hotel.Data.Model;
 using Microsoft.EntityFrameworkCore;
 
-namespace Hotel_Maui.Context
+namespace Hotel.Data.Context
 {
     public class MeuDbContext : DbContext
     {
@@ -9,21 +9,13 @@ namespace Hotel_Maui.Context
         public DbSet<CategoriaQuarto> CategoriaQuartos { get; set; }
         public DbSet<CadastroHospede> CadastroHospede { get; set; }
 
-        public MeuDbContext()
+        public MeuDbContext(DbContextOptions<MeuDbContext> options) : base(options)
         {
             SQLitePCL.Batteries_V2.Init();
 
             this.Database.EnsureCreated();
         }
-
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            string dbPath = Path.Combine(FileSystem.AppDataDirectory, "Hotel.db3");
-
-            optionsBuilder
-                .UseSqlite($"Filename={dbPath}");
-        }
+              
     }
-
 
 }

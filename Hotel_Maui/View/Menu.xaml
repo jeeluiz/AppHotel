@@ -13,10 +13,11 @@
             BackgroundColor="#ff556b2f"
             Visual="Default">
             <StackLayout Spacing="20">
-                <Button Text="Home" 
-                        Clicked="Btn_Home"
-                        TextColor="Black" />
-                
+                <Button
+                    Clicked="Btn_Home"
+                    Text="Home"
+                    TextColor="Black" />
+
                 <Button
                     Clicked="Btn_CadastroCliente"
                     Text="Cadastro De Hospede"
@@ -28,13 +29,14 @@
 
 
 
+
             </StackLayout>
         </ContentPage>
     </FlyoutPage.Flyout>
     <FlyoutPage.Detail>
         <NavigationPage>
             <x:Arguments>
-                <local:Home />
+                <local:HospedesCadastrados />
             </x:Arguments>
         </NavigationPage>
     </FlyoutPage.Detail>

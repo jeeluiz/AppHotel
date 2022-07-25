@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Hotel_Maui.Model
+namespace Hotel.Data.Model
 {
     public class Reserva 
     {

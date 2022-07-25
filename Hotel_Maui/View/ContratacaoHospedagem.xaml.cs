@@ -1,6 +1,5 @@
-using Hotel_Maui.Context;
-using Hotel_Maui.Enums;
-using Hotel_Maui.Model;
+using Hotel.Data.Context;
+using Hotel.Data.Model;
 using System.ComponentModel;
 
 namespace Hotel_Maui.View;
@@ -40,18 +39,18 @@ public partial class ContratacaoHospedagem : ContentPage
                 throw new Exception("Somente adultos podem alugar quartos");
 			
 			
-			Model.CategoriaQuarto quarto_selecionado = (Model.CategoriaQuarto)pckquarto.SelectedItem;
+			CategoriaQuarto quarto_selecionado = (CategoriaQuarto)pckquarto.SelectedItem;
             if (quarto_selecionado == null)
 				throw new Exception("Desculpe, selecione um quarto");
 
-			Model.Reserva dados_hospedagem = new Model.Reserva()
+			Reserva dados_hospedagem = new Reserva()
 			{
 				Quarto = quarto_selecionado,
 
 				QuantidadeAdultos = qnt_adultos,
 				QuantidadeCrianca = qnt_crianca,
 
-				QuantidadeDias = Model.Reserva.CalcularTempoEstadia(dtpck_data_checkin.Date, dtpck_data_checkout.Date),
+				QuantidadeDias = Reserva.CalcularTempoEstadia(dtpck_data_checkin.Date, dtpck_data_checkout.Date),
 
 				DataCheckIn = dtpck_data_checkin.Date,
 				DataCheckOut = dtpck_data_checkout.Date,
@@ -101,7 +100,7 @@ public partial class ContratacaoHospedagem : ContentPage
 
 		reserva.ValorTotal = reserva.CalcularValorEstadia();
 
-        using (var meuDbContext = new MeuDbContext())
+        using (var meuDbContext = new MeuDbContext(HotelMauiConstants.DbOptions))
         {
             meuDbContext.Add(reserva);
 

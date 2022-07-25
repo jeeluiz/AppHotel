@@ -7,12 +7,12 @@ public partial class Menu : FlyoutPage
 		InitializeComponent();
 	}
 
-	async  void Button_Cadastro_Quarto(object sender, EventArgs e)
+	private void Button_Cadastro_Quarto(object sender, EventArgs e)
 	{
 		((FlyoutPage)App.Current.MainPage).Detail = new NavigationPage(new ContratacaoHospedagem());
 
     }
-    async void Btn_CadastroCliente(object sender, EventArgs e)
+    private void Btn_CadastroCliente(object sender, EventArgs e)
     {
         ((FlyoutPage)App.Current.MainPage).Detail = new NavigationPage(new CadastroHospedePage());
 
@@ -20,6 +20,8 @@ public partial class Menu : FlyoutPage
 
 	private void Btn_Home(object sender, EventArgs e)
 	{
-        ((FlyoutPage)App.Current.MainPage).Detail = new NavigationPage(new Home());
+        ((FlyoutPage)App.Current.MainPage).Detail = new NavigationPage(new HospedesCadastrados());
     }
+
+	
 }

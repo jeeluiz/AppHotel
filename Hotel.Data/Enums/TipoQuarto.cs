@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Hotel_Maui.Enums
+namespace Hotel.Data.Enums
 {
     public enum TipoQuarto
     {

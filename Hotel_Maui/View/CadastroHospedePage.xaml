@@ -38,10 +38,10 @@
                     Text="Nome do Hospede" />
 
                 <Entry
+                    x:Name="EntNomeHospede"
                     Grid.Row="2"
                     Grid.Column="0"
                     Grid.ColumnSpan="5"
-                    BindingContext="{Binding CadastroHospede.Nome}"
                     MaxLength="50"
                     Style="{StaticResource EntryCadastroHospede}" />
 
@@ -55,10 +55,10 @@
                     Text="CPF" />
 
                 <Entry
+                    x:Name="EntryCPF"
                     Grid.Row="4"
                     Grid.Column="0"
                     Grid.ColumnSpan="5"
-                    BindingContext="{Binding CadastroHospede.CPF}"
                     MaxLength="50"
                     Style="{StaticResource EntryCadastroHospede}" />
 
@@ -72,10 +72,10 @@
                     Text="Cep" />
 
                 <Entry
+                    x:Name="EntryCep"
                     Grid.Row="6"
                     Grid.Column="0"
                     Grid.ColumnSpan="5"
-                    BindingContext="{Binding CadastroHospede.Cep}"
                     MaxLength="50"
                     Style="{StaticResource EntryCadastroHospede}" />
 
@@ -89,10 +89,10 @@
                     Text="Endereço" />
 
                 <Entry
+                    x:Name="EntryEndereco"
                     Grid.Row="8"
                     Grid.Column="0"
                     Grid.ColumnSpan="5"
-                    BindingContext="{Binding CadastroHospede.Endereco}"
                     MaxLength="50"
                     Style="{StaticResource EntryCadastroHospede}" />
 
@@ -106,10 +106,10 @@
                     Text="Numero/Complemento" />
 
                 <Entry
+                    x:Name="EntryNumeroComp"
                     Grid.Row="10"
                     Grid.Column="0"
                     Grid.ColumnSpan="5"
-                    BindingContext="{Binding CadastroHospede.NumeroEndereco}"
                     MaxLength="50"
                     Style="{StaticResource EntryCadastroHospede}" />
 

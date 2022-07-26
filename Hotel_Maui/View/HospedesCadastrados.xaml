@@ -3,8 +3,11 @@
     x:Class="Hotel_Maui.View.HospedesCadastrados"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:Models="clr-namespace:Hotel.Data.Model;assembly=Hotel.Data"
+    xmlns:ViewModels="clr-namespace:Hotel_Maui.ViewModel"
     x:Name="Pagina"
     Title="Hospedes Cadastrados"
+    x:DataType="ViewModels:HospedesCadastradosPageViewModel"
     BackgroundColor="#ff556b2f">
 
 
@@ -18,71 +21,82 @@
             <StackLayout>
                 <StackLayout>
                     <Entry
-                        x:Name="CPFHospede"
                         BackgroundColor="#363636"
                         FontSize="Title"
                         HorizontalTextAlignment="Center"
                         Keyboard="Numeric"
                         MaxLength="14"
                         Placeholder="Busque Por Cpf"
+                        Text="{Binding ParametroBusca}"
                         TextColor="White" />
                     <StackLayout>
                         <Button
                             BackgroundColor="#ff556b2f"
-                            Clicked="Buscar_Clicked"
+                            Command="{Binding BuscarHospedes}"
                             HorizontalOptions="Start"
                             Text="Buscar"
                             TextColor="Black" />
 
                     </StackLayout>
                 </StackLayout>
-                <ListView x:Name="listaReserva" ItemTapped="listaReserva_ItemTapped">
-                    <ListView.Header>
+                <RefreshView Command="{Binding AtualizarLista}" IsRefreshing="{Binding EstaAtualizando, Mode=OneWay}">
+                    <ListView ItemsSource="{Binding CadastrosHospedes}">
+                        <ListView.Header>
+                            <Grid
+                                Padding="20"
+                                ColumnDefinitions="*,*,*"
+                                RowDefinitions="Auto">
+                                <Label
+                                    Grid.Row="0"
+                                    Grid.Column="0"
+                                    Text="Id" />
+                                <Label
+                                    Grid.Row="0"
+                                    Grid.Column="1"
+                                    Text="Nome" />
+                                <Label
+                                    Grid.Row="0"
+                                    Grid.Column="2"
+                                    Text="CPF" />
+                            </Grid>
 
-                        <Grid
-                            Padding="20"
-                            ColumnDefinitions="*,*,*"
-                            RowDefinitions="Auto">
-                            <Label
-                                Grid.Row="0"
-                                Grid.Column="0"
-                                Text="Id" />
-                            <Label
-                                Grid.Row="0"
-                                Grid.Column="1"
-                                Text="Nome" />
-                            <Label
-                                Grid.Row="0"
-                                Grid.Column="2"
-                                Text="CPF" />
-                        </Grid>
-
-                    </ListView.Header>
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <ViewCell>
-                                <Grid
-                                    Padding="20"
-                                    ColumnDefinitions="*,*,*"
-                                    RowDefinitions="Auto">
-                                    <Label
-                                        Grid.Row="0"
-                                        Grid.Column="0"
-                                        Text="{Binding Id}" />
-                                    <Label
-                                        x:Name="Nome.txt"
-                                        Grid.Row="0"
-                                        Grid.Column="1"
-                                        Text="{Binding Nome}" />
-                                    <Label
-                                        Grid.Row="0"
-                                        Grid.Column="2"
-                                        Text="{Binding CPF}" />
-                                </Grid>
-                            </ViewCell>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
+                        </ListView.Header>
+                        <ListView.ItemTemplate>
+                            <DataTemplate x:DataType="Models:CadastroHospede">
+                                <ViewCell>
+                                    <ViewCell.ContextActions>
+                                        <MenuItem
+                                            Command="{Binding Source={x:Reference Pagina}, Path=BindingContext.AbrirDetalhesAtividade}"
+                                            CommandParameter="{Binding Id}"
+                                            Text="Detalhes" />
+                                        <MenuItem
+                                            Command="{Binding Source={x:Reference Pagina}, Path=BindingContext.Remover}"
+                                            CommandParameter="{Binding CadastroHospede}"
+                                            Text="Excluir" />
+                                    </ViewCell.ContextActions>
+                                    <Grid
+                                        Padding="20"
+                                        ColumnDefinitions="*,*,*"
+                                        RowDefinitions="Auto">
+                                        <Label
+                                            Grid.Row="0"
+                                            Grid.Column="0"
+                                            Text="{Binding Id}" />
+                                        <Label
+                                            x:Name="Nome.txt"
+                                            Grid.Row="0"
+                                            Grid.Column="1"
+                                            Text="{Binding Nome}" />
+                                        <Label
+                                            Grid.Row="0"
+                                            Grid.Column="2"
+                                            Text="{Binding CPF}" />
+                                    </Grid>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </RefreshView>
             </StackLayout>
         </Frame>
     </ContentPage.Content>

@@ -1,4 +1,4 @@
-using Hotel_Maui.ViewModel;
+using Hotel_Maui.Sections.Hospedes;
 
 namespace Hotel_Maui.View;
 

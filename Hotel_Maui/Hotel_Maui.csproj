@@ -75,10 +75,10 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Compile Update="View\CadastroHospedePage.xaml.cs">
+	  <Compile Update="Sections\Hospedes\CadastroHospedePage.xaml.cs">
 	    <DependentUpon>CadastroHospedePage.xaml</DependentUpon>
 	  </Compile>
-	  <Compile Update="View\HospedesCadastrados.xaml.cs">
+	  <Compile Update="Sections\Hospedes\HospedesCadastrados.xaml.cs">
 	    <DependentUpon>HospedesCadastrados.xaml</DependentUpon>
 	  </Compile>
 	  <Compile Update="View\Menu.xaml.cs">
@@ -87,13 +87,13 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiXaml Update="View\CadastroHospedePage.xaml">
+	  <MauiXaml Update="Sections\Hospedes\CadastroHospedePage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="View\ContratacaoHospedagem.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="View\HospedesCadastrados.xaml">
+	  <MauiXaml Update="Sections\Hospedes\HospedesCadastrados.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="View\Menu.xaml">
@@ -102,6 +102,10 @@
 	  <MauiXaml Update="View\HospedagemCalculada.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="ViewModel\" />
 	</ItemGroup>
 
 </Project>

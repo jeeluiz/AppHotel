@@ -4,7 +4,7 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:Models="clr-namespace:Hotel.Data.Model;assembly=Hotel.Data"
-    xmlns:ViewModels="clr-namespace:Hotel_Maui.ViewModel"
+    xmlns:ViewModels="clr-namespace:Hotel_Maui.Sections.Hospedes"
     x:Name="Pagina"
     Title="Hospedes Cadastrados"
     x:DataType="ViewModels:HospedesCadastradosPageViewModel"
@@ -71,7 +71,7 @@
                                             Text="Detalhes" />
                                         <MenuItem
                                             Command="{Binding Source={x:Reference Pagina}, Path=BindingContext.Remover}"
-                                            CommandParameter="{Binding CadastroHospede}"
+                                            CommandParameter="{Binding Id}"
                                             Text="Excluir" />
                                     </ViewCell.ContextActions>
                                     <Grid
@@ -81,11 +81,6 @@
                                         <Label
                                             Grid.Row="0"
                                             Grid.Column="0"
-                                            Text="{Binding Id}" />
-                                        <Label
-                                            x:Name="Nome.txt"
-                                            Grid.Row="0"
-                                            Grid.Column="1"
                                             Text="{Binding Nome}" />
                                         <Label
                                             Grid.Row="0"

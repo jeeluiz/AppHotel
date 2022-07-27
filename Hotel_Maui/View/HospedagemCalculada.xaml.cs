@@ -7,13 +7,6 @@ public partial class HospedagemCalculada : ContentPage
 		InitializeComponent();
 	}
 
-	private async void Button_Clicked(object sender, EventArgs e)
-	{
-		await Navigation.PopAsync();
-	}
-
-	private void Button_Clicked_1(object sender, EventArgs e)
-	{
-
-	}
+	
+	
 }

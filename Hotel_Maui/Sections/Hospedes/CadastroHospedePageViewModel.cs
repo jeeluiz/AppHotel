@@ -1,5 +1,7 @@
 ﻿using Hotel.Data.Context;
 using Hotel.Data.Model;
+using Hotel_Maui.View;
+using Microsoft.EntityFrameworkCore;
 using System.ComponentModel;
 using System.Windows.Input;
 
@@ -10,6 +12,8 @@ namespace Hotel_Maui.Sections.Hospedes
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
+        int id_parametro;
+
         private string nome, cpf, cep, numeroEndereco, endereco;
         private Guid id;
 
@@ -17,7 +21,7 @@ namespace Hotel_Maui.Sections.Hospedes
         {
             set
             {
-                int id_parametro = Convert.ToInt32(Uri.UnescapeDataString(value));
+                id_parametro = Convert.ToInt32(Uri.UnescapeDataString(value));
 
                 VerAtividade.Execute(id_parametro);
             }
@@ -108,18 +112,6 @@ namespace Hotel_Maui.Sections.Hospedes
             });
         }
 
-        public ICommand NovaAtividade
-        {
-            get => new Command(() =>
-            {
-                Id = new Guid();
-                Nome = string.Empty;
-                Cep = string.Empty;
-                CPF = string.Empty;
-                Endereco = string.Empty;
-                NumeroEndereco = string.Empty;
-            });
-        }
 
         public ICommand BotaoSalvar
         {
@@ -129,17 +121,32 @@ namespace Hotel_Maui.Sections.Hospedes
                 {
                     using var context = new MeuDbContext(HotelMauiConstants.DbOptions);
 
-                    var model = new CadastroHospede
-                    {
-                        Nome = Nome,
-                        CPF = CPF,
-                        Cep = Cep,
-                        NumeroEndereco = NumeroEndereco,
-                        Endereco = Endereco,
-                    };
+                    var model = await context.CadastroHospede.FirstOrDefaultAsync(h => h.CPF == CPF);
 
-                    await context.AddAsync(model);
+                    if(model == null)
+                    {
+                        model = new CadastroHospede
+                        {
+                            CPF = CPF,
+                            Nome = Nome,
+                            Cep = Cep,
+                            Endereco = Endereco,
+                            NumeroEndereco = NumeroEndereco,
+                        };
+                        await context.AddAsync(model);
+                    }else
+                    {
+                        model.Nome = Nome;
+                        model.Cep = Cep;
+                        model.Endereco = Endereco;
+                        model.NumeroEndereco = NumeroEndereco;
+
+                        context.Update(model);
+                    }
+
                     await context.SaveChangesAsync();
+                    ((FlyoutPage)App.Current.MainPage).Detail =
+                    new NavigationPage(new HospedesCadastrados());
                 }
                 catch (Exception ex)
                 {

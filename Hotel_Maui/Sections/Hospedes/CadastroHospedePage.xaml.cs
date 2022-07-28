@@ -12,17 +12,4 @@ public partial class CadastroHospedePage : ContentPage
         BindingContext = viewModel ?? new CadastroHospedePageViewModel();
         InitializeComponent();
     }
-
-    protected override async void OnAppearing()
-    {
-        var vm = (CadastroHospedePageViewModel)BindingContext;
-
-        if (vm.Id == Guid.Empty)
-        {
-            vm.NovaAtividade.Execute(null);
-        }
-
-    }
-
-  
 }

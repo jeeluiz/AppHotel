@@ -81,7 +81,7 @@ namespace Hotel_Maui.Sections.Hospedes
             {
                 return new Command<Guid>((id) =>
                 {
-                    var hospede = CadastrosHospedes.FirstOrDefault();
+                    var hospede = CadastrosHospedes.FirstOrDefault(h => h.Id == id);
 
                     var vm = new CadastroHospedePageViewModel
                     {

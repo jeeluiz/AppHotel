@@ -49,14 +49,11 @@
                                 <Label
                                     Grid.Row="0"
                                     Grid.Column="0"
-                                    Text="Id" />
-                                <Label
-                                    Grid.Row="0"
-                                    Grid.Column="1"
                                     Text="Nome" />
                                 <Label
                                     Grid.Row="0"
-                                    Grid.Column="2"
+                                    Grid.Column="1"
+                                    Grid.ColumnSpan="2"
                                     Text="CPF" />
                             </Grid>
 
@@ -84,7 +81,9 @@
                                             Text="{Binding Nome}" />
                                         <Label
                                             Grid.Row="0"
-                                            Grid.Column="2"
+                                            Grid.Column="1"
+                                            Grid.ColumnSpan="2"
+                                            HorizontalTextAlignment="Center"
                                             Text="{Binding CPF}" />
                                     </Grid>
                                 </ViewCell>

@@ -15,7 +15,7 @@
             <StackLayout Spacing="20">
                 <Button
                     Clicked="Btn_Home"
-                    Text="Home"
+                    Text="Hospedes Cadastrados"
                     TextColor="Black" />
 
                 <Button

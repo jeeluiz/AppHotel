@@ -6,7 +6,4 @@ public partial class HospedagemCalculada : ContentPage
 	{
 		InitializeComponent();
 	}
-
-	
-	
 }

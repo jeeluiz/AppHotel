@@ -17,23 +17,7 @@ namespace Hotel.Data.Model
         public TimeSpan HoraCheckOut { get; set; }
         public double ValorTotal { get; set; }
 
-        public static int CalcularTempoEstadia(DateTime checkin,DateTime checkout)
-        {
-            int total_dias = checkout.Subtract(checkin).Days;
-
-            //if (total_dias <= total_dias)
-            //    throw new Exception("saida de dias nao pode ser inferior a entrada");
-            return total_dias;
-        }
-
-        public double CalcularValorEstadia()
-        {
-            double valor_adulto =(QuantidadeAdultos * Quarto.ValorDiariaAdulto) * QuantidadeDias;
-            double valor_crianca = (QuantidadeCrianca * Quarto.ValorDiariaCrianca) * QuantidadeDias;
-            double valor_hospedagem = valor_crianca + valor_adulto;
-            
-            return valor_hospedagem;
-        }
+  
 
     }
 }

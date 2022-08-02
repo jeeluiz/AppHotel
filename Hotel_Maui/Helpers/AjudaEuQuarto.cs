@@ -42,10 +42,5 @@ namespace Hotel_Maui.Helpers
                     throw new ArgumentOutOfRangeException();
             };
         }
-        
-        
-        
-
-
     };
 }

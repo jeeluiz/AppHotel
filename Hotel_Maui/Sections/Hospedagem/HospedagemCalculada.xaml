@@ -4,6 +4,8 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     Title="Hospedagem Calculada"
+    xmlns:ViewModels="clr-namespace:Hotel_Maui.Sections.Hospedagem"
+    x:DataType="ViewModels:HospedagemCalculadaPageViewModel"
     BackgroundColor="#ff556b2f">
 
     <ContentPage.Content>
@@ -13,149 +15,7 @@
             BackgroundColor="#F5F5DC"
             BorderColor="DarkGreen"
             VerticalOptions="CenterAndExpand">
-            <Grid
-                x:Name="G1"
-                ColumnDefinitions="*,*,*,*,*"
-                ColumnSpacing="1"
-                RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,*,Auto,Auto,Auto"
-                RowSpacing="1">
-
-                <Label
-                    Grid.Row="0"
-                    Grid.RowSpan="2"
-                    Grid.Column="1"
-                    Grid.ColumnSpan="3"
-                    FontFamily="teste"
-                    FontSize="36"
-                    HorizontalTextAlignment="Center"
-                    Text="Total Diaria"
-                    VerticalOptions="CenterAndExpand" />
-
-                <Label
-                    Grid.Row="2"
-                    Grid.Column="0"
-                    Grid.ColumnSpan="4"
-                    Style="{StaticResource LabelTexto}"
-                    Text="Quantidade Adulto:" />
-
-
-                <Label
-                    Grid.Row="2"
-                    Grid.Column="5"
-                    Style="{StaticResource LabelTexto}"
-                    Text="{Binding QuantidadeAdultos}" />
-
-                <Label
-                    Grid.Row="3"
-                    Grid.Column="0"
-                    Grid.ColumnSpan="4"
-                    Style="{StaticResource LabelTexto}"
-                    Text="Quantidade Criança:" />
-
-
-                <Label
-                    Grid.Row="3"
-                    Grid.Column="5"
-                    Style="{StaticResource LabelTexto}"
-                    Text="{Binding QuantidadeCrianca}" />
-
-                <Label
-                    Grid.Row="5"
-                    Grid.Column="1"
-                    Grid.ColumnSpan="3"
-                    Style="{StaticResource TextoQuarto}"
-                    Text="Quarto" />
-
-                <Label
-                    Grid.Row="6"
-                    Grid.Column="1"
-                    Grid.ColumnSpan="3"
-                    FontSize="Title"
-                    Style="{StaticResource TextoPickerQuarto}"
-                    Text="{Binding Path=Quarto.Descricao}" />
-
-                <Label
-                    Grid.Row="7"
-                    Grid.Column="1"
-                    Grid.ColumnSpan="3"
-                    Style="{StaticResource TextoCheckIn/out}"
-                    Text="Check-In:" />
-
-                <Label
-                    x:Name="lblCheckIn"
-                    Grid.Row="8"
-                    Grid.Column="0"
-                    Grid.ColumnSpan="2"
-                    FontAttributes="Bold"
-                    FontSize="Medium"
-                    HorizontalOptions="Center"
-                    Text="{Binding DataCheckIn, StringFormat='{}{0:dd/MM/yyyy}'}" />
-
-                <Label
-                    Grid.Row="8"
-                    Grid.Column="3"
-                    Grid.ColumnSpan="2"
-                    FontAttributes="Bold"
-                    FontSize="Medium"
-                    Text="{Binding HoraCheckIn, StringFormat='{0:hh\\:mm}'}" />
-
-                <Label
-                    Grid.Row="9"
-                    Grid.Column="1"
-                    Grid.ColumnSpan="3"
-                    Style="{StaticResource TextoCheckIn/out}"
-                    Text="Check-Out:" />
-
-
-                <Label
-                    x:Name="lblCheck"
-                    Grid.Row="10"
-                    Grid.Column="0"
-                    Grid.ColumnSpan="2"
-                    FontAttributes="Bold"
-                    FontSize="Medium"
-                    HorizontalOptions="Center"
-                    Text="{Binding DataCheckOut, StringFormat='{0:dd/MM/yyyy}'}" />
-
-                <Label
-                    Grid.Row="10"
-                    Grid.Column="3"
-                    Grid.ColumnSpan="2"
-                    FontAttributes="Bold"
-                    FontSize="Medium"
-                    Text="{Binding HoraCheckOut, StringFormat='{0:hh\\:mm}'}" />
-
-                <Label
-                    Grid.Row="11"
-                    Grid.Column="1"
-                    Grid.ColumnSpan="2"
-                    Style="{StaticResource LabelTexto}"
-                    Text="Qtde dias:" />
-
-                <Label
-                    x:Name="lblQtde_dias"
-                    Grid.Row="11"
-                    Grid.Column="3"
-                    Style="{StaticResource LabelTexto}"
-                    Text="{Binding QuantidadeDias}" />
-
-                <Label
-                    Grid.Row="13"
-                    Grid.Column="0"
-                    Grid.ColumnSpan="5"
-                    Style="{StaticResource TextoTotal}"
-                    Text="Total Hospedagem:" />
-
-                <Label
-                    x:Name="ValorTotal"
-                    Grid.Row="14"
-                    Grid.Column="0"
-                    Grid.ColumnSpan="5"
-                    Style="{StaticResource ValoresCampos}"
-                    Text="{Binding ValorTotal, StringFormat='{}{0:c}'}" />
-
-
-            </Grid>
+           
         </Frame>
     </ContentPage.Content>
 </ContentPage>

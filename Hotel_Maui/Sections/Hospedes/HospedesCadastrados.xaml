@@ -5,9 +5,9 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:Models="clr-namespace:Hotel.Data.Model;assembly=Hotel.Data"
     xmlns:ViewModels="clr-namespace:Hotel_Maui.Sections.Hospedes"
+    x:DataType="ViewModels:HospedesCadastradosPageViewModel"
     x:Name="Pagina"
     Title="Hospedes Cadastrados"
-    x:DataType="ViewModels:HospedesCadastradosPageViewModel"
     BackgroundColor="#ff556b2f">
 
 

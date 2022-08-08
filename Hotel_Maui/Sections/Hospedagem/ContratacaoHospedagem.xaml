@@ -28,6 +28,7 @@
                     BackgroundColor="#363636"
                     FontSize="Medium"
                     HorizontalTextAlignment="Center"
+                    ReturnType="Done"
                     Text="{Binding ParametroBusca}" />
 
                 <Button
@@ -96,14 +97,14 @@
                     Grid.Row="7"
                     Grid.Column="1"
                     Grid.ColumnSpan="3"
-                    BindingContext="{Binding DataSaida}"
+                    Date="{Binding DataSaida}"
                     TextColor="Black" />
 
                 <TimePicker
                     Grid.Row="7"
                     Grid.Column="5"
                     TextColor="Black"
-                    Time="{Binding HoraChegada, StringFormat='{}{0:MM/dd/yyyy a\\t h:mm tt}'}" />
+                    Time="{Binding HoraSaida, StringFormat='{}{0:MM/dd/yyyy a\\t h:mm tt}'}" />
 
                 <Label
                     Grid.Row="9"
@@ -114,7 +115,7 @@
                 <Label
                     Grid.Row="9"
                     Grid.Column="2"
-                     Text="{Binding QuantidadeAdulto, StringFormat='{0:F0}'}"
+                    Text="{Binding QuantidadeAdulto, StringFormat='{0:F0}'}"
                     VerticalOptions="CenterAndExpand" />
 
 
@@ -122,9 +123,9 @@
                     Grid.Row="9"
                     Grid.Column="3"
                     Grid.ColumnSpan="2"
-                    Value="{Binding QuantidadeAdulto}" 
                     Maximum="5"
-                    Minimum="1" />
+                    Minimum="1"
+                    Value="{Binding QuantidadeAdulto}" />
 
                 <Label
                     Grid.Row="10"

@@ -19,7 +19,7 @@ namespace Hotel_Maui.Sections.Hospedagem
         
 
         public string ParametroBusca { get; set; }
-        private CadastroHospede? hospede { get; set; }       
+        private CadastroHospede? Hospede { get; set; }       
         private object quartoSelecionado;
         private int quantidadeAdulto;
         private int quantidadeCriancas;
@@ -103,7 +103,7 @@ namespace Hotel_Maui.Sections.Hospedagem
                 }
 
                 Nome = result.Nome;
-                hospede = result;
+                Hospede = result;
             }
             catch (Exception ex)
             {
@@ -173,7 +173,7 @@ namespace Hotel_Maui.Sections.Hospedagem
         {
             get => new Command(async () =>
             {
-                if(hospede is null)
+                if(Hospede is null)
                 {
                     await Application.Current.MainPage.DisplayAlert("Ops", "Procure Um hospede Primeiro", "OK");
                     return;
@@ -182,7 +182,7 @@ namespace Hotel_Maui.Sections.Hospedagem
                 {
                     using var context = new MeuDbContext(HotelMauiConstants.DbOptions);
 
-                    var model = await context.Hospedagems.FirstOrDefaultAsync(h => h.Hospede == hospede);
+                    var model = await context.Hospedagems.FirstOrDefaultAsync(h => h.Hospede== Hospede);
 
                     if (model == null)
                     {
@@ -203,6 +203,8 @@ namespace Hotel_Maui.Sections.Hospedagem
                         }
                         var dias = (DataSaida - DataChegada).Days;
 
+                        context.Entry(Hospede).State = EntityState.Unchanged;
+
                         model = new Reserva
                         {
                             Quarto = quartoDb,
@@ -210,7 +212,7 @@ namespace Hotel_Maui.Sections.Hospedagem
                             DataCheckOut = dataSaida,
                             HoraCheckIn = horaChegada,
                             HoraCheckOut = horaSaida,
-                            Hospede = hospede,
+                            Hospede = Hospede,
                             ValorTotal = quarto.ValorDiariaCrianca * QuantidadeCriancas * dias + 
                                          quarto.ValorDiariaAdulto * QuantidadeAdulto * dias,
                         };

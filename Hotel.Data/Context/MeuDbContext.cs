@@ -15,7 +15,14 @@ namespace Hotel.Data.Context
 
             this.Database.EnsureCreated();
         }
-              
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.EnableSensitiveDataLogging();
+            optionsBuilder.EnableDetailedErrors();
+
+            base.OnConfiguring(optionsBuilder);
+        }
     }
 
 }

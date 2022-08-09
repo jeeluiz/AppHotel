@@ -16,10 +16,9 @@ namespace Hotel_Maui.Sections.Hospedagem
         public event PropertyChangedEventHandler PropertyChanged;
 
         private string _nome;
-        
 
         public string ParametroBusca { get; set; }
-        private CadastroHospede? Hospede { get; set; }       
+        private CadastroHospede? Hospede { get; set; }
         private object quartoSelecionado;
         private int quantidadeAdulto;
         private int quantidadeCriancas;
@@ -27,6 +26,7 @@ namespace Hotel_Maui.Sections.Hospedagem
         private TimeSpan horaChegada = DateTime.Now.TimeOfDay;
         private DateTime dataSaida = DateTime.Now;
         private TimeSpan horaSaida = DateTime.Now.TimeOfDay;
+        private double valorTotal { get; set; }
 
         public string Nome
         {
@@ -129,7 +129,6 @@ namespace Hotel_Maui.Sections.Hospedagem
             set { dataChegada = value; }
         }
 
-
         public TimeSpan HoraChegada
         {
             get { return horaChegada; }
@@ -153,27 +152,40 @@ namespace Hotel_Maui.Sections.Hospedagem
         public int QuantidadeCriancas
         {
             get { return quantidadeCriancas; }
-            set { quantidadeCriancas = value;
-                PropertyChanged(this, new PropertyChangedEventArgs(nameof(QuantidadeCriancas)));}
+            set
+            {
+                quantidadeCriancas = value;
+                PropertyChanged(this, new PropertyChangedEventArgs(nameof(QuantidadeCriancas)));
             }
+        }
 
 
         public int QuantidadeAdulto
         {
             get { return quantidadeAdulto; }
-            set { quantidadeAdulto = value; 
-            PropertyChanged(this, new PropertyChangedEventArgs(nameof(QuantidadeAdulto)));}
-        
+            set
+            {
+                quantidadeAdulto = value;
+                PropertyChanged(this, new PropertyChangedEventArgs(nameof(QuantidadeAdulto)));
+            }
+
         }
 
-
-
+        public double ValorTotal
+        {
+            get { return valorTotal; }
+            set
+            {
+                valorTotal = value;
+                PropertyChanged(this, new PropertyChangedEventArgs(nameof(valorTotal)));
+            }
+        }
 
         public ICommand BotaoSalvar
         {
             get => new Command(async () =>
             {
-                if(Hospede is null)
+                if (Hospede is null)
                 {
                     await Application.Current.MainPage.DisplayAlert("Ops", "Procure Um hospede Primeiro", "OK");
                     return;
@@ -182,15 +194,21 @@ namespace Hotel_Maui.Sections.Hospedagem
                 {
                     using var context = new MeuDbContext(HotelMauiConstants.DbOptions);
 
-                    var model = await context.Hospedagems.FirstOrDefaultAsync(h => h.Hospede== Hospede);
+                    var model = await context.Hospedagems.FirstOrDefaultAsync(h => h.Hospede == Hospede);
+
+                    var enumQuarto = Enum.Parse<TipoQuarto>(QuartoSelecionado.ToString());
+                    var quarto = enumQuarto.ParaCategoria();
+                    var quartoDb = await context.CategoriaQuartos.FirstOrDefaultAsync(c => c.Id == quarto.Id);
+
+                    var dias = (DataSaida - DataChegada).Days;
+
+                    var valorTotal = quarto.ValorDiariaCrianca * QuantidadeCriancas * dias +
+                                     quarto.ValorDiariaAdulto * QuantidadeAdulto * dias;
 
                     if (model == null)
                     {
-                        var enumQuarto = Enum.Parse<TipoQuarto>(QuartoSelecionado.ToString());
-                        var quarto = enumQuarto.ParaCategoria();
 
-                        var quartoDb = await context.CategoriaQuartos.FirstOrDefaultAsync(c => c.Id == quarto.Id);
-                        if(quartoDb == null)
+                        if (quartoDb == null)
                         {
                             quartoDb = quarto;
                             await context.AddAsync(quartoDb);
@@ -198,10 +216,9 @@ namespace Hotel_Maui.Sections.Hospedagem
 
                         if (DataSaida < DataChegada)
                         {
-                            await Application.Current.MainPage.DisplayAlert("Ops","A data de saida não pode ser menor que a data de chegada", "OK");
+                            await Application.Current.MainPage.DisplayAlert("Ops", "A data de saida não pode ser menor que a data de chegada", "OK");
                             return;
                         }
-                        var dias = (DataSaida - DataChegada).Days;
 
                         context.Entry(Hospede).State = EntityState.Unchanged;
 
@@ -213,24 +230,34 @@ namespace Hotel_Maui.Sections.Hospedagem
                             HoraCheckIn = horaChegada,
                             HoraCheckOut = horaSaida,
                             Hospede = Hospede,
-                            ValorTotal = quarto.ValorDiariaCrianca * QuantidadeCriancas * dias + 
-                                         quarto.ValorDiariaAdulto * QuantidadeAdulto * dias,
+                            ValorTotal = valorTotal,
                         };
                         await context.AddAsync(model);
                     }
                     else
                     {
+                        model.Quarto = quartoDb;
                         model.DataCheckIn = dataChegada;
                         model.DataCheckOut = dataSaida;
                         model.HoraCheckIn = horaChegada;
                         model.HoraCheckOut = horaSaida;
-
+                        model.ValorTotal = valorTotal;
                         context.Update(model);
                     }
 
                     await context.SaveChangesAsync();
+
+                    var page = new HospedagemCalculada();
+
+                    page.BindingContext = new HospedagemCalculadaPageViewModel()
+                    {
+                        Nome = Nome,
+                        ValorTotal = valorTotal,
+
+                    };
+
                     ((FlyoutPage)App.Current.MainPage).Detail =
-                    new NavigationPage(new HospedagemCalculada());
+                    new NavigationPage(page);
                 }
                 catch (Exception ex)
                 {

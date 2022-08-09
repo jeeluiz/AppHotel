@@ -27,6 +27,7 @@
                     Grid.ColumnSpan="5"
                     BackgroundColor="#363636"
                     FontSize="Medium"
+                    Keyboard="Numeric"
                     HorizontalTextAlignment="Center"
                     ReturnType="Done"
                     Text="{Binding ParametroBusca}" />

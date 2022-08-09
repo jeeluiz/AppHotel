@@ -5,37 +5,29 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:Models="clr-namespace:Hotel.Data.Model;assembly=Hotel.Data"
     xmlns:ViewModels="clr-namespace:Hotel_Maui.Sections.Hospedes"
-    x:DataType="ViewModels:HospedesCadastradosPageViewModel"
     x:Name="Pagina"
     Title="Hospedes Cadastrados"
-    BackgroundColor="#ff556b2f">
+    x:DataType="ViewModels:HospedesCadastradosPageViewModel"
+    BackgroundColor="#4a8085">
 
 
     <ContentPage.Content>
-        <Frame
-            Margin="20"
-            BackgroundColor="#F5F5DC"
-            BorderColor="DarkGreen"
-            VerticalOptions="CenterAndExpand">
+        <Frame Margin="20" VerticalOptions="CenterAndExpand">
 
             <StackLayout>
-                <StackLayout>
+                <StackLayout Spacing="20">
                     <Entry
-                        BackgroundColor="#363636"
                         FontSize="Title"
                         HorizontalTextAlignment="Center"
                         Keyboard="Numeric"
                         MaxLength="14"
                         Placeholder="Busque Por Cpf"
-                        Text="{Binding ParametroBusca}"
-                        TextColor="White" />
+                        Text="{Binding ParametroBusca}" />
                     <StackLayout>
                         <Button
-                            BackgroundColor="#ff556b2f"
                             Command="{Binding BuscarHospedes}"
                             HorizontalOptions="Start"
-                            Text="Buscar"
-                            TextColor="Black" />
+                            Text="Buscar" />
 
                     </StackLayout>
                 </StackLayout>
@@ -45,16 +37,17 @@
                             <Grid
                                 Padding="20"
                                 ColumnDefinitions="*,*,*"
-                                RowDefinitions="Auto">
+                                RowDefinitions="*"
+                                RowSpacing="2">
                                 <Label
                                     Grid.Row="0"
                                     Grid.Column="0"
-                                    Text="Nome" />
+                                    Text="Nome :" />
                                 <Label
                                     Grid.Row="0"
                                     Grid.Column="1"
                                     Grid.ColumnSpan="2"
-                                    Text="CPF" />
+                                    Text="CPF :" />
                             </Grid>
 
                         </ListView.Header>
@@ -72,7 +65,7 @@
                                             Text="Excluir" />
                                     </ViewCell.ContextActions>
                                     <Grid
-                                        Padding="20"
+                                        Padding="10"
                                         ColumnDefinitions="*,*,*"
                                         RowDefinitions="Auto">
                                         <Label

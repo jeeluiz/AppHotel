@@ -6,18 +6,14 @@
     xmlns:ViewModels="clr-namespace:Hotel_Maui.Sections.Hospedes"
     Title="Cadastro Hospede"
     x:DataType="ViewModels:CadastroHospedePageViewModel"
-    BackgroundColor="#ff556b2f">
+    BackgroundColor="#4a8085">
 
 
     <ContentPage.Content>
-        <Frame
-            Margin="20"
-            BackgroundColor="#F5F5DC"
-            BorderColor="DarkGreen"
-            VerticalOptions="CenterAndExpand">
+        <Frame Margin="20" VerticalOptions="CenterAndExpand">
             <Grid
                 x:Name="G4"
-                ColumnDefinitions="auto,auto,auto,auto,auto"
+                ColumnDefinitions="*"
                 ColumnSpacing="1"
                 RowDefinitions="auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,*,auto"
                 RowSpacing="1">
@@ -25,31 +21,25 @@
                 <Label
                     Grid.Row="0"
                     Grid.Column="0"
-                    Grid.ColumnSpan="4"
-                    Style="{StaticResource TextoTotal}"
                     Text="Cadastro do Hospede" />
 
                 <Label
                     Grid.Row="1"
-                    Grid.Column="1"
-                    Grid.ColumnSpan="3"
+                    Grid.Column="0"
                     FontAttributes="Bold"
+                    HorizontalOptions="CenterAndExpand"
                     HorizontalTextAlignment="Center"
-                    Style="{StaticResource LabelsCampos}"
                     Text="Nome do Hospede" />
 
                 <Entry
                     Grid.Row="2"
                     Grid.Column="0"
-                    Grid.ColumnSpan="5"
                     MaxLength="50"
-                    Style="{StaticResource EntryCadastroHospede}"
                     Text="{Binding Nome}" />
 
                 <Label
                     Grid.Row="3"
                     Grid.Column="0"
-                    Grid.ColumnSpan="5"
                     FontAttributes="Bold"
                     FontSize="22"
                     HorizontalOptions="CenterAndExpand"
@@ -58,16 +48,13 @@
                 <Entry
                     Grid.Row="4"
                     Grid.Column="0"
-                    Grid.ColumnSpan="5"
                     Keyboard="Numeric"
                     MaxLength="50"
-                    Style="{StaticResource EntryCadastroHospede}"
                     Text="{Binding CPF}" />
 
                 <Label
                     Grid.Row="5"
                     Grid.Column="0"
-                    Grid.ColumnSpan="5"
                     FontAttributes="Bold"
                     FontSize="22"
                     HorizontalOptions="CenterAndExpand"
@@ -76,17 +63,14 @@
                 <Entry
                     Grid.Row="6"
                     Grid.Column="0"
-                    Grid.ColumnSpan="5"
                     Keyboard="Numeric"
                     MaxLength="50"
                     ReturnType="Go"
-                    Style="{StaticResource EntryCadastroHospede}"
                     Text="{Binding Cep}" />
 
                 <Label
                     Grid.Row="7"
                     Grid.Column="0"
-                    Grid.ColumnSpan="5"
                     FontAttributes="Bold"
                     FontSize="22"
                     HorizontalOptions="CenterAndExpand"
@@ -95,15 +79,12 @@
                 <Entry
                     Grid.Row="8"
                     Grid.Column="0"
-                    Grid.ColumnSpan="5"
                     MaxLength="50"
-                    Style="{StaticResource EntryCadastroHospede}"
                     Text="{Binding Endereco}" />
 
                 <Label
                     Grid.Row="9"
                     Grid.Column="0"
-                    Grid.ColumnSpan="5"
                     FontAttributes="Bold"
                     FontSize="22"
                     HorizontalOptions="CenterAndExpand"
@@ -112,22 +93,17 @@
                 <Entry
                     Grid.Row="10"
                     Grid.Column="0"
-                    Grid.ColumnSpan="5"
                     Keyboard="Numeric"
                     MaxLength="50"
-                    Style="{StaticResource EntryCadastroHospede}"
                     Text="{Binding NumeroEndereco}" />
 
                 <Button
                     Grid.Row="12"
                     Grid.Column="0"
-                    Grid.ColumnSpan="5"
-                    BackgroundColor="#ff556b2f"
                     Command="{Binding BotaoSalvar}"
                     CornerRadius="50"
                     FontSize="Title"
                     Text="Salvar"
-                    TextColor="White"
                     VerticalOptions="CenterAndExpand" />
 
             </Grid>

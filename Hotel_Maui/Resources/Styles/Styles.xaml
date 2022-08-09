@@ -22,8 +22,8 @@
     </Style>
 
     <Style TargetType="Button">
-        <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Primary}}" />
-        <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource White}}" />
+        <Setter Property="TextColor" Value="{StaticResource White}" />
+        <Setter Property="BackgroundColor" Value="{StaticResource Primary}" />
         <Setter Property="FontFamily" Value="OpenSansRegular" />
         <Setter Property="FontSize" Value="14" />
         <Setter Property="CornerRadius" Value="8" />
@@ -99,18 +99,19 @@
     </Style>
 
     <Style TargetType="Entry">
-        <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}" />
-        <Setter Property="BackgroundColor" Value="Transparent" />
+        <Setter Property="TextColor" Value="{StaticResource Black}" />
+        <Setter Property="BackgroundColor" Value="White" />
         <Setter Property="FontFamily" Value="OpenSansRegular" />
-        <Setter Property="FontSize" Value="14" />
-        <Setter Property="PlaceholderColor" Value="{AppThemeBinding Light={StaticResource Gray200}, Dark={StaticResource Gray500}}" />
+        <Setter Property="HorizontalTextAlignment" Value="Center" />
+        <Setter Property="FontSize" Value="22" />
+        <Setter Property="PlaceholderColor" Value="{StaticResource Gray600}" />
         <Setter Property="VisualStateManager.VisualStateGroups">
             <VisualStateGroupList>
                 <VisualStateGroup x:Name="CommonStates">
                     <VisualState x:Name="Normal" />
                     <VisualState x:Name="Disabled">
                         <VisualState.Setters>
-                            <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource Gray300}, Dark={StaticResource Gray600}}" />
+                            <Setter Property="TextColor" Value="{StaticResource Gray600}" />
                         </VisualState.Setters>
                     </VisualState>
                 </VisualStateGroup>
@@ -120,7 +121,8 @@
 
     <Style TargetType="Frame">
         <Setter Property="HasShadow" Value="False" />
-        <Setter Property="BorderColor" Value="{AppThemeBinding Light={StaticResource Gray200}, Dark={StaticResource Gray950}}" />
+        <Setter Property="BackgroundColor" Value="Beige" />
+        <Setter Property="BorderColor" Value="{StaticResource Gray950}" />
         <Setter Property="CornerRadius" Value="8" />
     </Style>
 
@@ -144,9 +146,9 @@
     </Style>
 
     <Style TargetType="Label">
-        <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource Black}}" />
+        <Setter Property="TextColor" Value="{StaticResource Black}" />
         <Setter Property="FontFamily" Value="teste" />
-        <Setter Property="FontSize" Value="14" />
+        <Setter Property="FontSize" Value="22" />
         <Setter Property="VisualStateManager.VisualStateGroups">
             <VisualStateGroupList>
                 <VisualStateGroup x:Name="CommonStates">
@@ -378,92 +380,6 @@
         <Setter Property="BarTextColor" Value="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource Primary}}" />
         <Setter Property="UnselectedTabColor" Value="{AppThemeBinding Light={StaticResource Gray200}, Dark={StaticResource Gray950}}" />
         <Setter Property="SelectedTabColor" Value="{AppThemeBinding Light={StaticResource Gray950}, Dark={StaticResource Gray200}}" />
-    </Style>
-
-    <Style x:Key="LabelsCampos" TargetType="Label">
-        <Setter Property="HorizontalOptions" Value="Start" />
-        <Setter Property="VerticalOptions" Value="Center" />
-        <Setter Property="HorizontalTextAlignment" Value="Center" />
-        <Setter Property="Margin" Value="0,0,5,0" />
-        <Setter Property="FontSize" Value="22" />
-        <Setter Property="TextColor" Value="Black" />
-
-    </Style>
-    <Style x:Key="LabelsValoresStepper" TargetType="Label">
-        <Setter Property="VerticalOptions" Value="CenterAndExpand" />
-        <Setter Property="HorizontalTextAlignment" Value="Center" />
-        <Setter Property="FontSize" Value="Medium" />
-        <Setter Property="FontAttributes" Value="Bold" />
-        <Setter Property="TextColor" Value="Red" />
-    </Style>
-    <Style x:Key="ValoresCampos" TargetType="Label">
-        <Setter Property="HorizontalOptions" Value="CenterAndExpand" />
-        <Setter Property="VerticalOptions" Value="StartAndExpand" />
-        <Setter Property="HorizontalTextAlignment" Value="End" />
-        <Setter Property="TextColor" Value="Red" />
-        <Setter Property="Margin" Value="0,0,5,0" />
-        <Setter Property="FontAttributes" Value="Bold" />
-        <Setter Property="FontSize" Value="30" />
-    </Style>
-    <Style x:Key="LabelTexto" TargetType="Label">
-        <Setter Property="HorizontalOptions" Value="FillAndExpand" />
-        <Setter Property="VerticalOptions" Value="CenterAndExpand" />
-        <Setter Property="HorizontalTextAlignment" Value="Center" />
-        <Setter Property="Margin" Value="0,0,5,0" />
-        <Setter Property="FontSize" Value="22" />
-        <Setter Property="TextColor" Value="Black" />
-    </Style>
-    <Style x:Key="TextoDatePicker" TargetType="DatePicker">
-        <Setter Property="HorizontalOptions" Value="Start" />
-        <Setter Property="VerticalOptions" Value="Start" />
-        <Setter Property="FontSize" Value="22" />
-        <Setter Property="TextColor" Value="Black" />
-    </Style>
-    <Style x:Key="TextoPickerQuarto" TargetType="Label">
-        <Setter Property="HorizontalOptions" Value="CenterAndExpand" />
-        <Setter Property="VerticalOptions" Value="CenterAndExpand" />
-        <Setter Property="HorizontalTextAlignment" Value="End" />
-        <Setter Property="TextColor" Value="Red" />
-        <Setter Property="Margin" Value="0,0,5,0" />
-        <Setter Property="FontAttributes" Value="Bold" />
-        <Setter Property="FontSize" Value="Medium" />
-    </Style>
-    <Style x:Key="TextoQuarto" TargetType="Label">
-        <Setter Property="HorizontalOptions" Value="CenterAndExpand" />
-        <Setter Property="VerticalOptions" Value="CenterAndExpand" />
-        <Setter Property="HorizontalTextAlignment" Value="End" />
-        <Setter Property="TextColor" Value="Black" />
-        <Setter Property="FontAttributes" Value="Bold" />
-        <Setter Property="FontSize" Value="36" />
-    </Style>
-    <Style x:Key="TextoCheckIn/out" TargetType="Label">
-        <Setter Property="HorizontalOptions" Value="CenterAndExpand" />
-        <Setter Property="VerticalOptions" Value="CenterAndExpand" />
-        <Setter Property="HorizontalTextAlignment" Value="Center" />
-        <Setter Property="TextColor" Value="Black" />
-        <Setter Property="FontAttributes" Value="Bold" />
-        <Setter Property="FontSize" Value="20" />
-    </Style>
-    <Style x:Key="TextoTotal" TargetType="Label">
-        <Setter Property="HorizontalOptions" Value="Center" />
-        <Setter Property="VerticalOptions" Value="Center" />
-        <Setter Property="HorizontalTextAlignment" Value="Center" />
-        <Setter Property="TextColor" Value="Black" />
-        <Setter Property="FontAttributes" Value="Bold" />
-        <Setter Property="FontSize" Value="34" />
-    </Style>
-    <Style x:Key="TimePickerTextoHr" TargetType="TimePicker">
-        <Setter Property="HorizontalOptions" Value="Start" />
-        <Setter Property="VerticalOptions" Value="Center" />
-        <Setter Property="FontSize" Value="22" />
-        <Setter Property="TextColor" Value="Black" />
-    </Style>
-    <Style x:Key="EntryCadastroHospede" TargetType="Entry">
-        <Setter Property="FontSize" Value="22" />
-        <Setter Property="HorizontalTextAlignment" Value="Center" />
-        <Setter Property="TextColor" Value="White" />
-        <Setter Property="BackgroundColor" Value="#ff556b2f" />
-
     </Style>
 
 </ResourceDictionary>

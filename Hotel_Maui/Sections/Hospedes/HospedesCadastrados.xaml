@@ -76,7 +76,7 @@
                                             Grid.Row="0"
                                             Grid.Column="1"
                                             Grid.ColumnSpan="2"
-                                            HorizontalTextAlignment="Center"
+                                            HorizontalTextAlignment="Start"
                                             Text="{Binding CPF}" />
                                     </Grid>
                                 </ViewCell>

@@ -6,7 +6,7 @@
     xmlns:ViewModels="clr-namespace:Hotel_Maui.Sections.Hospedes"
     Title="Cadastro Hospede"
     x:DataType="ViewModels:CadastroHospedePageViewModel"
-    BackgroundColor="#4a8085">
+    BackgroundColor="{StaticResource Primary}">
 
 
     <ContentPage.Content>
@@ -21,7 +21,11 @@
                 <Label
                     Grid.Row="0"
                     Grid.Column="0"
-                    Text="Cadastro do Hospede" />
+                    FontAttributes="Bold"
+                    FontSize="Title"
+                    HorizontalTextAlignment="Center"
+                    Text="Cadastro do Hospede"
+                    TextDecorations="Underline" />
 
                 <Label
                     Grid.Row="1"
@@ -43,13 +47,13 @@
                     FontAttributes="Bold"
                     FontSize="22"
                     HorizontalOptions="CenterAndExpand"
-                    Text="CPF" />
+                    Text="CPF/CNPJ" />
 
                 <Entry
                     Grid.Row="4"
                     Grid.Column="0"
                     Keyboard="Numeric"
-                    MaxLength="50"
+                    ReturnType="Go"
                     Text="{Binding CPF}" />
 
                 <Label

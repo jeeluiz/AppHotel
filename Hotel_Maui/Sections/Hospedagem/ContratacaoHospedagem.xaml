@@ -6,13 +6,11 @@
     xmlns:ViewModels="clr-namespace:Hotel_Maui.Sections.Hospedagem"
     Title="Contratação Hospedagem"
     x:DataType="ViewModels:ContratacaoHospedagemViewModel"
-    BackgroundColor="#ff556b2f">
+    BackgroundColor="{StaticResource Primary}">
 
     <ContentPage.Content>
         <Frame
             Margin="20"
-            BackgroundColor="#F5F5DC"
-            BorderColor="DarkGreen"
             VerticalOptions="CenterAndExpand">
 
             <Grid
@@ -25,7 +23,6 @@
                     Grid.Row="0"
                     Grid.Column="0"
                     Grid.ColumnSpan="5"
-                    BackgroundColor="#363636"
                     FontSize="Medium"
                     Keyboard="Numeric"
                     HorizontalTextAlignment="Center"
@@ -36,7 +33,6 @@
                     Grid.Row="1"
                     Grid.Column="0"
                     Grid.ColumnSpan="5"
-                    BackgroundColor="#ff556b2f"
                     Command="{Binding BuscarHospedes}"
                     CornerRadius="50"
                     Text="Buscar Hospede"
@@ -70,19 +66,18 @@
                     FontSize="Title"
                     HorizontalOptions="Center"
                     Text="Check In:"
-                    TextColor="Black" />
+                    />
 
                 <DatePicker
                     Grid.Row="5"
                     Grid.Column="1"
                     Grid.ColumnSpan="3"
                     Date="{Binding DataChegada}"
-                    TextColor="Black" />
+                     />
 
                 <TimePicker
                     Grid.Row="5"
                     Grid.Column="5"
-                    TextColor="Black"
                     Time="{Binding HoraChegada, StringFormat='{}{0:MM/dd/yyyy a\\t h:mm tt}'}" />
 
                 <Label
@@ -92,25 +87,25 @@
                     FontSize="Title"
                     HorizontalOptions="Center"
                     Text="Check Out:"
-                    TextColor="Black" />
+                    />
 
                 <DatePicker
                     Grid.Row="7"
                     Grid.Column="1"
                     Grid.ColumnSpan="3"
                     Date="{Binding DataSaida}"
-                    TextColor="Black" />
+                     />
 
                 <TimePicker
                     Grid.Row="7"
                     Grid.Column="5"
-                    TextColor="Black"
                     Time="{Binding HoraSaida, StringFormat='{}{0:MM/dd/yyyy a\\t h:mm tt}'}" />
 
                 <Label
                     Grid.Row="9"
                     Grid.Column="0"
                     Text="Adulto:"
+                    FontSize="18"
                     VerticalOptions="CenterAndExpand" />
 
                 <Label
@@ -125,13 +120,14 @@
                     Grid.Column="3"
                     Grid.ColumnSpan="2"
                     Maximum="5"
-                    Minimum="1"
+                    Minimum="0"
                     Value="{Binding QuantidadeAdulto}" />
 
                 <Label
                     Grid.Row="10"
                     Grid.Column="0"
                     Text="Criança:"
+                    FontSize="18"
                     VerticalOptions="CenterAndExpand" />
 
                 <Label
@@ -145,7 +141,7 @@
                     Grid.Column="3"
                     Grid.ColumnSpan="2"
                     Maximum="5"
-                    Minimum="1"
+                    Minimum="0"
                     Value="{Binding QuantidadeCriancas}" />
 
 
@@ -153,12 +149,10 @@
                     Grid.Row="12"
                     Grid.Column="0"
                     Grid.ColumnSpan="5"
-                    BackgroundColor="#ff556b2f"
                     Command="{Binding BotaoSalvar}"
                     CornerRadius="50"
                     FontSize="Title"
                     Text="Salvar"
-                    TextColor="White"
                     VerticalOptions="CenterAndExpand" />
 
 

@@ -6,39 +6,72 @@
     xmlns:ViewModels="clr-namespace:Hotel_Maui.Sections.Hospedagem"
     Title="Hospedagem Calculada"
     x:DataType="ViewModels:HospedagemCalculadaPageViewModel"
-    BackgroundColor="#ff556b2f">
+    BackgroundColor="{StaticResource Primary}">
 
     <ContentPage.Content>
 
-        <Frame
-            Margin="20"
-            BackgroundColor="#F5F5DC"
-            BorderColor="DarkGreen"
-            VerticalOptions="CenterAndExpand">
+        <Frame Margin="20" VerticalOptions="CenterAndExpand">
             <Grid
                 ColumnDefinitions="*"
                 ColumnSpacing="1"
-                RowDefinitions="*,*"
+                RowDefinitions="auto,*,auto,*,auto,*"
                 RowSpacing="1">
+
 
                 <Label
                     Grid.Row="0"
                     Grid.Column="0"
-                    HorizontalOptions="CenterAndExpand"
-                    HorizontalTextAlignment="Center"
-                    Text="{Binding Nome}"
                     FontSize="36"
-                    TextDecorations="Underline"
-                    TextColor="Black" />
+                    HorizontalOptions="CenterAndExpand"
+                    Text="Hospede"
+                    TextColor="Black"
+                    TextDecorations="Underline" />
 
                 <Label
                     Grid.Row="1"
                     Grid.Column="0"
+                    FontSize="36"
+                    HorizontalOptions="CenterAndExpand"
+                    HorizontalTextAlignment="Center"
+                    Text="{Binding Nome}"
+                    TextColor="Black" />
+
+
+                <Label
+                    Grid.Row="2"
+                    Grid.Column="0"
+                    FontSize="36"
+                    HorizontalOptions="CenterAndExpand"
+                    Text="Dias"
+                    TextColor="Black"
+                    TextDecorations="Underline" />
+
+                <Label
+                    Grid.Row="3"
+                    Grid.Column="0"
+                    FontSize="36"
+                    HorizontalOptions="Center"
+                    HorizontalTextAlignment="Center"
+                    Text="{Binding Dias}"
+                    TextColor="Red" />
+
+                <Label
+                    Grid.Row="4"
+                    Grid.Column="0"
+                    FontSize="36"
+                    HorizontalOptions="CenterAndExpand"
+                    Text="Total"
+                    TextColor="Black"
+                    TextDecorations="Underline" />
+
+                <Label
+                    Grid.Row="5"
+                    Grid.Column="0"
+                    FontSize="36"
                     HorizontalOptions="CenterAndExpand"
                     HorizontalTextAlignment="Center"
                     Text="{Binding ValorTotal, StringFormat='{0:C}'}"
-                    FontSize="36"
-                    TextColor="Black" />
+                    TextColor="Red" />
 
             </Grid>
         </Frame>

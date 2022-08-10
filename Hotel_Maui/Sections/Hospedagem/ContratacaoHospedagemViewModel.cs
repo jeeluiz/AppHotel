@@ -6,7 +6,6 @@ using Hotel_Maui.View;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Linq;
 using System.Windows.Input;
 
 namespace Hotel_Maui.Sections.Hospedagem
@@ -253,6 +252,7 @@ namespace Hotel_Maui.Sections.Hospedagem
                     {
                         Nome = Nome,
                         ValorTotal = valorTotal,
+                        Dias = dias,
 
                     };
 

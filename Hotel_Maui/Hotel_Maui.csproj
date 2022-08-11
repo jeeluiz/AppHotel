@@ -32,10 +32,14 @@
 
 	<ItemGroup>
 		<!-- App Icon -->
-		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
+		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#4a8085" />
+		<MauiSplashScreen Include="Resources\Images\logo.svg">
+		  <Color>#4a8085</Color>
+		  <BaseSize>400,400</BaseSize>
+		</MauiSplashScreen>
 
 		<!-- Splash Screen -->
-		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#512BD4" BaseSize="128,128" />
+		<MauiSplashScreen Include="Resources\Splash\logo.svg" Color="#4a8085" BaseSize="400,400" />
 
 		<!-- Images -->
 		<MauiImage Include="Resources\Images\*" />
@@ -49,59 +53,64 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiFont Remove="Resources\Fonts\Courgette-Regular.ttf" />
+		<MauiFont Remove="Resources\Fonts\Courgette-Regular.ttf" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <None Remove="Platforms\Windows\Resources\values\colors.xml" />
-	  <None Remove="Resources\Fonts\Courgette-Regular.ttf" />
+	  <MauiImage Remove="Resources\Images\logo.svg" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <AndroidResource Include="Platforms\Windows\Resources\values\colors.xml" />
+		<None Remove="Platforms\Windows\Resources\values\colors.xml" />
+		<None Remove="Resources\Fonts\Courgette-Regular.ttf" />
+		<None Remove="Resources\Images\logo.svg" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <EmbeddedResource Include="Resources\Fonts\Courgette-Regular.ttf" />
+		<AndroidResource Include="Platforms\Windows\Resources\values\colors.xml" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="6.0.7" />
-	  <PackageReference Include="sqlite-net-pcl" Version="1.8.116" />
+		<EmbeddedResource Include="Resources\Fonts\Courgette-Regular.ttf" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\Hotel.Data\Hotel.Data.csproj" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="6.0.7" />
+		<PackageReference Include="sqlite-net-pcl" Version="1.8.116" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Compile Update="Sections\Hospedes\CadastroHospedePage.xaml.cs">
-	    <DependentUpon>CadastroHospedePage.xaml</DependentUpon>
-	  </Compile>
-	  <Compile Update="Sections\Hospedes\HospedesCadastrados.xaml.cs">
-	    <DependentUpon>HospedesCadastrados.xaml</DependentUpon>
-	  </Compile>
-	  <Compile Update="Sections\Hospedagem\Menu.xaml.cs">
-	    <DependentUpon>Menu.xaml</DependentUpon>
-	  </Compile>
+		<ProjectReference Include="..\Hotel.Data\Hotel.Data.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiXaml Update="Sections\Hospedes\CadastroHospedePage.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="Sections\Hospedagem\ContratacaoHospedagem.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="Sections\Hospedes\HospedesCadastrados.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="Sections\Hospedagem\Menu.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="Sections\Hospedagem\HospedagemCalculada.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
+		<Compile Update="Sections\Hospedes\CadastroHospedePage.xaml.cs">
+			<DependentUpon>CadastroHospedePage.xaml</DependentUpon>
+		</Compile>
+		<Compile Update="Sections\Hospedes\HospedesCadastrados.xaml.cs">
+			<DependentUpon>HospedesCadastrados.xaml</DependentUpon>
+		</Compile>
+		<Compile Update="Sections\Hospedagem\Menu.xaml.cs">
+			<DependentUpon>Menu.xaml</DependentUpon>
+		</Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+		<MauiXaml Update="Sections\Hospedes\CadastroHospedePage.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
+		<MauiXaml Update="Sections\Hospedagem\ContratacaoHospedagem.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
+		<MauiXaml Update="Sections\Hospedes\HospedesCadastrados.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
+		<MauiXaml Update="Sections\Hospedagem\Menu.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
+		<MauiXaml Update="Sections\Hospedagem\HospedagemCalculada.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
 	</ItemGroup>
 
 </Project>

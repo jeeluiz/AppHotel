@@ -9,9 +9,7 @@
     BackgroundColor="{StaticResource Primary}">
 
     <ContentPage.Content>
-        <Frame
-            Margin="20"
-            VerticalOptions="CenterAndExpand">
+        <Frame Margin="20" VerticalOptions="CenterAndExpand">
 
             <Grid
                 ColumnDefinitions="*,*,*,*,*"
@@ -24,8 +22,8 @@
                     Grid.Column="0"
                     Grid.ColumnSpan="5"
                     FontSize="Medium"
-                    Keyboard="Numeric"
                     HorizontalTextAlignment="Center"
+                    Keyboard="Numeric"
                     ReturnType="Done"
                     Text="{Binding ParametroBusca}" />
 
@@ -65,15 +63,13 @@
                     Grid.ColumnSpan="5"
                     FontSize="Title"
                     HorizontalOptions="Center"
-                    Text="Check In:"
-                    />
+                    Text="Check In:" />
 
                 <DatePicker
                     Grid.Row="5"
                     Grid.Column="1"
                     Grid.ColumnSpan="3"
-                    Date="{Binding DataChegada}"
-                     />
+                    Date="{Binding DataChegada}" />
 
                 <TimePicker
                     Grid.Row="5"
@@ -86,15 +82,13 @@
                     Grid.ColumnSpan="5"
                     FontSize="Title"
                     HorizontalOptions="Center"
-                    Text="Check Out:"
-                    />
+                    Text="Check Out:" />
 
                 <DatePicker
                     Grid.Row="7"
                     Grid.Column="1"
                     Grid.ColumnSpan="3"
-                    Date="{Binding DataSaida}"
-                     />
+                    Date="{Binding DataSaida}" />
 
                 <TimePicker
                     Grid.Row="7"
@@ -104,8 +98,8 @@
                 <Label
                     Grid.Row="9"
                     Grid.Column="0"
-                    Text="Adulto:"
                     FontSize="18"
+                    Text="Adulto:"
                     VerticalOptions="CenterAndExpand" />
 
                 <Label
@@ -126,8 +120,8 @@
                 <Label
                     Grid.Row="10"
                     Grid.Column="0"
-                    Text="Criança:"
                     FontSize="18"
+                    Text="Criança:"
                     VerticalOptions="CenterAndExpand" />
 
                 <Label

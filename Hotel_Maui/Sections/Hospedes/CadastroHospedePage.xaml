@@ -54,6 +54,7 @@
                     Grid.Column="0"
                     Keyboard="Numeric"
                     ReturnType="Go"
+                    MaxLength="14"
                     Text="{Binding CPF}" />
 
                 <Label

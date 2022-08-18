@@ -180,6 +180,32 @@ namespace Hotel_Maui.Sections.Hospedagem
             }
         }
 
+        public ICommand VerAtividade
+        {
+            get => new Command<Guid>(async (id) =>
+            {
+                try
+                {
+                    using var context = new MeuDbContext(HotelMauiConstants.DbOptions);
+                    Reserva model = await context.Hospedagems.FindAsync(id);
+
+                    Nome = model.Hospede.Nome;
+                    QuartoSelecionado = model.Quarto;
+                    QuantidadeAdulto = model.QuantidadeAdultos;
+                    QuantidadeCriancas = model.QuantidadeCrianca;
+                    DataChegada = model.DataCheckIn;
+                    HoraChegada = model.HoraCheckIn;
+                    DataSaida = model.DataCheckOut;
+
+                }
+                catch (Exception ex)
+                {
+                    await Application.Current.MainPage.DisplayAlert("Ops", ex.Message, "OK");
+
+                }
+            });
+        }
+
         public ICommand BotaoSalvar
         {
             get => new Command(async () =>
@@ -228,6 +254,8 @@ namespace Hotel_Maui.Sections.Hospedagem
                             DataCheckOut = dataSaida,
                             HoraCheckIn = horaChegada,
                             HoraCheckOut = horaSaida,
+                            QuantidadeAdultos = quantidadeAdulto,
+                            QuantidadeCrianca = quantidadeCriancas,
                             Hospede = Hospede,
                             ValorTotal = valorTotal,
                         };
@@ -241,6 +269,8 @@ namespace Hotel_Maui.Sections.Hospedagem
                         model.HoraCheckIn = horaChegada;
                         model.HoraCheckOut = horaSaida;
                         model.ValorTotal = valorTotal;
+                        model.QuantidadeAdultos = quantidadeAdulto;
+                        model.QuantidadeCrianca = quantidadeCriancas;
                         context.Update(model);
                     }
 
@@ -253,6 +283,14 @@ namespace Hotel_Maui.Sections.Hospedagem
                         Nome = Nome,
                         ValorTotal = valorTotal,
                         Dias = dias,
+                        Quarto = quartoDb,
+                        DataCheckIn = dataChegada,
+                        DataCheckOut = dataSaida,
+                        HoraCheckIn = horaChegada,
+                        HoraCheckOut = horaSaida,
+                        Hospede = Hospede,
+                        QuantidadeAdulto = quantidadeAdulto,
+                        QuantidadeCrianca = quantidadeCriancas,
 
                     };
 

@@ -14,14 +14,14 @@
             <Grid
                 ColumnDefinitions="*"
                 ColumnSpacing="1"
-                RowDefinitions="auto,*,auto,*,auto,*"
+                RowDefinitions="auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto"
                 RowSpacing="1">
 
 
                 <Label
                     Grid.Row="0"
                     Grid.Column="0"
-                    FontSize="36"
+                    FontSize="Title"
                     HorizontalOptions="CenterAndExpand"
                     Text="Hospede"
                     TextColor="Black"
@@ -30,7 +30,7 @@
                 <Label
                     Grid.Row="1"
                     Grid.Column="0"
-                    FontSize="36"
+                    FontSize="Medium"
                     HorizontalOptions="CenterAndExpand"
                     HorizontalTextAlignment="Center"
                     Text="{Binding Nome}"
@@ -40,34 +40,160 @@
                 <Label
                     Grid.Row="2"
                     Grid.Column="0"
-                    FontSize="36"
+                    FontSize="Title"
                     HorizontalOptions="CenterAndExpand"
-                    Text="Dias"
+                    Text="CPF"
                     TextColor="Black"
                     TextDecorations="Underline" />
 
                 <Label
                     Grid.Row="3"
                     Grid.Column="0"
-                    FontSize="36"
+                    FontSize="Medium"
                     HorizontalOptions="Center"
                     HorizontalTextAlignment="Center"
-                    Text="{Binding Dias}"
+                    Text="{Binding CPF}"
                     TextColor="Red" />
 
                 <Label
                     Grid.Row="4"
                     Grid.Column="0"
-                    FontSize="36"
+                    FontSize="Title"
                     HorizontalOptions="CenterAndExpand"
-                    Text="Total"
+                    Text="Quarto Selecionado"
                     TextColor="Black"
                     TextDecorations="Underline" />
 
                 <Label
                     Grid.Row="5"
                     Grid.Column="0"
-                    FontSize="36"
+                    FontSize="Medium"
+                    HorizontalOptions="Center"
+                    HorizontalTextAlignment="Center"
+                    Text="{Binding Quarto.Descricao}"
+                    TextColor="Red" />
+
+                <Label
+                    Grid.Row="6"
+                    Grid.Column="0"
+                    FontSize="Title"
+                    HorizontalOptions="CenterAndExpand"
+                    Text="Data Check-IN"
+                    TextColor="Black"
+                    TextDecorations="Underline" />
+
+                <Label
+                    Grid.Row="7"
+                    Grid.Column="0"
+                    FontSize="Medium"
+                    HorizontalOptions="Center"
+                    HorizontalTextAlignment="Center"
+                    Text="{Binding DataCheckIn, StringFormat='{0:dd/MM/yyyy}'}"
+                    TextColor="Red" />
+
+                <Label
+                    Grid.Row="8"
+                    Grid.Column="0"
+                    FontSize="Title"
+                    HorizontalOptions="CenterAndExpand"
+                    Text="Data Check-Out"
+                    TextColor="Black"
+                    TextDecorations="Underline" />
+
+                <Label
+                    Grid.Row="9"
+                    Grid.Column="0"
+                    FontSize="Medium"
+                    HorizontalOptions="Center"
+                    HorizontalTextAlignment="Center"
+                    Text="{Binding DataCheckOut, StringFormat='{0:dd/MM/yyyy}'}"
+                    TextColor="Red" />
+
+                <Label
+                    Grid.Row="10"
+                    Grid.Column="0"
+                    FontSize="Title"
+                    HorizontalOptions="CenterAndExpand"
+                    Text="Hora Check-In"
+                    TextColor="Black"
+                    TextDecorations="Underline" />
+
+                <Label
+                    Grid.Row="11"
+                    Grid.Column="0"
+                    FontSize="Medium"
+                    HorizontalOptions="Center"
+                    HorizontalTextAlignment="Center"
+                    Text="{Binding HoraCheckIn, StringFormat='{0:HH:mm:ss}'}"
+                    TextColor="Red" />
+
+                <Label
+                    Grid.Row="12"
+                    Grid.Column="0"
+                    FontSize="Title"
+                    HorizontalOptions="CenterAndExpand"
+                    Text="Hora Check-Out"
+                    TextColor="Black"
+                    TextDecorations="Underline" />
+
+                <Label
+                    Grid.Row="13"
+                    Grid.Column="0"
+                    FontSize="Medium"
+                    HorizontalOptions="Center"
+                    HorizontalTextAlignment="Center"
+                    Text="{Binding HoraCheckOut, StringFormat='{0:HH:mm:ss}'}"
+                    TextColor="Red" />
+
+                <Label
+                    Grid.Row="14"
+                    Grid.Column="0"
+                    FontSize="Title"
+                    HorizontalOptions="CenterAndExpand"
+                    Text="Quantidade Adulto"
+                    TextColor="Black"
+                    TextDecorations="Underline" />
+
+                <Label
+                    Grid.Row="15"
+                    Grid.Column="0"
+                    FontSize="Medium"
+                    HorizontalOptions="Center"
+                    HorizontalTextAlignment="Center"
+                    Text="{Binding QuantidadeAdulto}"
+                    TextColor="Red" />
+
+                <Label
+                    Grid.Row="16"
+                    Grid.Column="0"
+                    FontSize="Title"
+                    HorizontalOptions="CenterAndExpand"
+                    Text="Quantidade Crianca"
+                    TextColor="Black"
+                    TextDecorations="Underline" />
+
+                <Label
+                    Grid.Row="17"
+                    Grid.Column="0"
+                    FontSize="Medium"
+                    HorizontalOptions="Center"
+                    HorizontalTextAlignment="Center"
+                    Text="{Binding QuantidadeCrianca}"
+                    TextColor="Red" />
+
+                <Label
+                    Grid.Row="18"
+                    Grid.Column="0"
+                    FontSize="Title"
+                    HorizontalOptions="CenterAndExpand"
+                    Text="Total"
+                    TextColor="Black"
+                    TextDecorations="Underline" />
+
+                <Label
+                    Grid.Row="19"
+                    Grid.Column="0"
+                    FontSize="Medium"
                     HorizontalOptions="CenterAndExpand"
                     HorizontalTextAlignment="Center"
                     Text="{Binding ValorTotal, StringFormat='{0:C}'}"

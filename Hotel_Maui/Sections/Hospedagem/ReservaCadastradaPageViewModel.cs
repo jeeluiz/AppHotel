@@ -1,5 +1,6 @@
 ﻿using Hotel.Data.Context;
 using Hotel.Data.Model;
+using Hotel_Maui.Sections.Hospedes;
 using Hotel_Maui.View;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.ObjectModel;
@@ -11,6 +12,36 @@ namespace Hotel_Maui.Sections.Hospedagem
     public class ReservaCadastradaPageViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
+
+        private int quantidadeAdulto;
+        private int quantidadeCriancas;
+
+        public string Nome { get; set; }
+        public double ValorTotal { get; set; }
+        public int Dias { get; set; }
+        public string Quarto { get; set; }
+        public DateTime DataCheckIn { get; set; }
+        public DateTime DataCheckOut { get; set; }
+        public TimeSpan HoraCheckIn { get; set; }
+        public TimeSpan HoraCheckOut { get; set; }
+        public int QuantidadeAdulto
+        {
+            get { return quantidadeAdulto; }
+            set
+            {
+                quantidadeAdulto = value;
+                PropertyChanged(this, new PropertyChangedEventArgs(nameof(QuantidadeAdulto)));
+            }
+        }
+        public int QuantidadeCrianca
+        {
+            get { return quantidadeCriancas; }
+            set
+            {
+                quantidadeCriancas = value;
+                PropertyChanged(this, new PropertyChangedEventArgs(nameof(QuantidadeCrianca)));
+            }
+        }
 
         public string ParametroBusca { get; set; }
 
@@ -52,7 +83,7 @@ namespace Hotel_Maui.Sections.Hospedagem
                 using var context = new MeuDbContext(HotelMauiConstants.DbOptions);
 
 
-                IQueryable<Reserva> query = context.Hospedagems.Include(r => r.Hospede);
+                IQueryable<Reserva> query = context.Hospedagems.Include(r => r.Hospede).Include(r => r.Quarto);
 
                 if (!string.IsNullOrEmpty(cpf))
                 {
@@ -83,21 +114,24 @@ namespace Hotel_Maui.Sections.Hospedagem
                 {
                     var reserva = ReservasCadastradas.FirstOrDefault(h => h.Id == id);
 
-                    var vm = new ContratacaoHospedagemViewModel
+                    var vm = new HospedagemCalculadaPageViewModel
                     {
-
                         Nome = reserva.Hospede.Nome,
-                        QuartoSelecionado = reserva.Quarto,
+                        CPF = reserva.Hospede.CPF,
+                        ValorTotal = reserva.ValorTotal,
+                        Dias = reserva.QuantidadeDias,
+                        Quarto = reserva.Quarto,
+                        DataCheckIn = reserva.DataCheckIn,
+                        DataCheckOut = reserva.DataCheckOut,
+                        HoraCheckIn = reserva.HoraCheckIn,
+                        HoraCheckOut = reserva.HoraCheckOut,
                         QuantidadeAdulto = reserva.QuantidadeAdultos,
-                        QuantidadeCriancas = reserva.QuantidadeCrianca,
-                        DataChegada = reserva.DataCheckIn,
-                        HoraChegada = reserva.HoraCheckIn,
-                        DataSaida = reserva.DataCheckOut,
-                        HoraSaida = reserva.HoraCheckOut
+                        QuantidadeCrianca = reserva.QuantidadeCrianca,
+
                     };
 
                     ((FlyoutPage)App.Current.MainPage).Detail =
-                    new NavigationPage(new ContratacaoHospedagem());
+                    new NavigationPage(new HospedagemCalculada(vm));
                 });
             }
         }

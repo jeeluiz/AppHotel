@@ -33,6 +33,12 @@
                     Clicked="Button_Cadastro_Quarto"
                     Text="Cadastro De Hospedagem"
                     TextColor="Black" />
+                <Button
+                    BackgroundColor="{StaticResource BotaoMenu}"
+                    BorderColor="{StaticResource Black}"
+                    Clicked="Button_Reservas_Cadastradas"
+                    Text="Reservas Cadastradas"
+                    TextColor="Black" />
 
 
 

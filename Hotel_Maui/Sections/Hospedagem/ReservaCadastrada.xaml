@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Hotel_Maui.Sections.Hospedagem.ReservaCadastrada"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:Models="clr-namespace:Hotel.Data.Model;assembly=Hotel.Data"
+    xmlns:ViewModels="clr-namespace:Hotel_Maui.Sections.Hospedagem"
+    x:Name="Reserva"
+    Title="Reservas Cadastradas"
+    x:DataType="ViewModels:ReservaCadastradaPageViewModel"
+    BackgroundColor="#4a8085">
+
+    <ContentPage.Content>
+        <Frame Margin="20" VerticalOptions="CenterAndExpand">
+
+            <StackLayout>
+                <StackLayout Spacing="20">
+                    <Entry
+                        FontSize="Title"
+                        HorizontalTextAlignment="Center"
+                        Keyboard="Numeric"
+                        MaxLength="14"
+                        Placeholder="Busque Por Cpf"
+                        Text="{Binding ParametroBusca}" />
+                    <StackLayout>
+                        <Button
+                            Command="{Binding BuscarHospedes}"
+                            HorizontalOptions="Start"
+                            Text="Buscar" />
+
+                    </StackLayout>
+                </StackLayout>
+                <RefreshView Command="{Binding AtualizarLista}" IsRefreshing="{Binding EstaAtualizando, Mode=OneWay}">
+                    <ListView ItemsSource="{Binding ReservasCadastradas}">
+                        <ListView.Header>
+                            <Grid
+                                Padding="20"
+                                ColumnDefinitions="*,*,*"
+                                RowDefinitions="*"
+                                RowSpacing="2">
+                                <Label
+                                    Grid.Row="0"
+                                    Grid.Column="0"
+                                    Text="Nome :" />
+                                <Label
+                                    Grid.Row="0"
+                                    Grid.Column="1"
+                                    Grid.ColumnSpan="2"
+                                    Text="CPF :" />
+                            </Grid>
+
+                        </ListView.Header>
+                        <ListView.ItemTemplate>
+                            <DataTemplate x:DataType="Models:Reserva">
+                                <ViewCell>
+                                    <ViewCell.ContextActions>
+                                        <MenuItem
+                                            Command="{Binding Source={x:Reference Reserva}, Path=BindingContext.AbrirDetalhesAtividade}"
+                                            CommandParameter="{Binding Id}"
+                                            Text="Detalhes" />
+                                        <MenuItem
+                                            Command="{Binding Source={x:Reference Reserva}, Path=BindingContext.Remover}"
+                                            CommandParameter="{Binding Id}"
+                                            Text="Excluir" />
+                                    </ViewCell.ContextActions>
+                                    <Grid
+                                        Padding="10"
+                                        ColumnDefinitions="*,*,*"
+                                        RowDefinitions="Auto">
+                                        <Label
+                                            Grid.Row="0"
+                                            Grid.Column="0"
+                                            Text="{Binding Hospede.Nome}" />
+                                        <Label
+                                            Grid.Row="0"
+                                            Grid.Column="1"
+                                            Grid.ColumnSpan="2"
+                                            HorizontalTextAlignment="Start"
+                                            Text="{Binding Hospede.CPF}" />
+                                    </Grid>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </RefreshView>
+            </StackLayout>
+        </Frame>
+    </ContentPage.Content>
+</ContentPage>

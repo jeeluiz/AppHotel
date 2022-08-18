@@ -6,9 +6,9 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Windows.Input;
 
-namespace Hotel_Maui.Sections.Hospedes
+namespace Hotel_Maui.Sections.Hospedagem
 {
-    public class HospedesCadastradosPageViewModel : INotifyPropertyChanged
+    public class ReservaCadastradaPageViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -26,12 +26,12 @@ namespace Hotel_Maui.Sections.Hospedes
             }
         }
 
-        ObservableCollection<CadastroHospede> cadastrosHospedes = new ObservableCollection<CadastroHospede>();
+        ObservableCollection<Reserva> reservasCadastradas = new ObservableCollection<Reserva>();
 
-        public ObservableCollection<CadastroHospede> CadastrosHospedes
+        public ObservableCollection<Reserva> ReservasCadastradas
         {
-            get => cadastrosHospedes;
-            set => cadastrosHospedes = value;
+            get => reservasCadastradas;
+            set => reservasCadastradas = value;
         }
 
         public ICommand BuscarHospedes { get { return new Command(async () => await BuscarHospedesNoBanco(ParametroBusca)); } }
@@ -51,18 +51,19 @@ namespace Hotel_Maui.Sections.Hospedes
 
                 using var context = new MeuDbContext(HotelMauiConstants.DbOptions);
 
-                IQueryable<CadastroHospede> query = context.CadastroHospede;
+
+                IQueryable<Reserva> query = context.Hospedagems.Include(r => r.Hospede);
 
                 if (!string.IsNullOrEmpty(cpf))
                 {
-                    query = query.Where(h => h.CPF == cpf);
+                    query = query.Where(h => h.Hospede.CPF == cpf);
                 }
 
                 var result = await query.ToListAsync();
 
-                CadastrosHospedes.Clear();
+                ReservasCadastradas.Clear();
 
-                result.ForEach(i => CadastrosHospedes.Add(i));
+                result.ForEach(i => ReservasCadastradas.Add(i));
             }
             catch (Exception ex)
             {
@@ -80,20 +81,23 @@ namespace Hotel_Maui.Sections.Hospedes
             {
                 return new Command<Guid>((id) =>
                 {
-                    var hospede = CadastrosHospedes.FirstOrDefault(h => h.Id == id);
+                    var reserva = ReservasCadastradas.FirstOrDefault(h => h.Id == id);
 
-                    var vm = new CadastroHospedePageViewModel
+                    var vm = new ContratacaoHospedagemViewModel
                     {
 
-                        Cep = hospede.Cep,
-                        CPF = hospede.CPF,
-                        Nome = hospede.Nome,
-                        Endereco = hospede.Endereco,
-                        NumeroEndereco = hospede.NumeroEndereco,
+                        Nome = reserva.Hospede.Nome,
+                        QuartoSelecionado = reserva.Quarto,
+                        QuantidadeAdulto = reserva.QuantidadeAdultos,
+                        QuantidadeCriancas = reserva.QuantidadeCrianca,
+                        DataChegada = reserva.DataCheckIn,
+                        HoraChegada = reserva.HoraCheckIn,
+                        DataSaida = reserva.DataCheckOut,
+                        HoraSaida = reserva.HoraCheckOut
                     };
 
                     ((FlyoutPage)App.Current.MainPage).Detail =
-                    new NavigationPage(new CadastroHospedePage(vm));
+                    new NavigationPage(new ContratacaoHospedagem());
                 });
             }
         }
@@ -110,7 +114,7 @@ namespace Hotel_Maui.Sections.Hospedes
                     {
                         using var context = new MeuDbContext(HotelMauiConstants.DbOptions);
 
-                        var hospede = context.CadastroHospede.FirstOrDefault(h => h.Id == id);
+                        var hospede = context.Hospedagems.FirstOrDefault(h => h.Id == id);
 
                         if (hospede is null)
                         {
@@ -123,8 +127,8 @@ namespace Hotel_Maui.Sections.Hospedes
 
                         await context.SaveChangesAsync();
 
-                        var itemRemover = CadastrosHospedes.First(e => e.Id == id);
-                        CadastrosHospedes.Remove(itemRemover);
+                        var itemRemover = ReservasCadastradas.First(e => e.Id == id);
+                        ReservasCadastradas.Remove(itemRemover);
                     }
                 }
                 catch (Exception ex)
@@ -133,6 +137,6 @@ namespace Hotel_Maui.Sections.Hospedes
                 }
             });
         }
+
     }
 }
-

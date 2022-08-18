@@ -101,6 +101,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<MauiXaml Update="Sections\Hospedagem\ReservaCadastrada.xaml">
+		  <Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
 		<MauiXaml Update="Sections\Hospedes\CadastroHospedePage.xaml">
 			<Generator>MSBuild:Compile</Generator>
 		</MauiXaml>

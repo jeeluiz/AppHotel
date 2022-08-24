@@ -281,6 +281,7 @@ namespace Hotel_Maui.Sections.Hospedagem
                     page.BindingContext = new HospedagemCalculadaPageViewModel()
                     {
                         Nome = Nome,
+                        CPF = Hospede.CPF,
                         ValorTotal = valorTotal,
                         Dias = dias,
                         Quarto = quartoDb,

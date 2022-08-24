@@ -41,7 +41,16 @@
                     Grid.Row="2"
                     Grid.Column="0"
                     MaxLength="50"
-                    Text="{Binding Nome}" />
+                    ReturnType="Next"
+                    Text="{Binding Nome}" >
+                    <Entry.Keyboard>
+                        <Keyboard x:FactoryMethod="Create">
+                            <x:Arguments>
+                                <KeyboardFlags>CapitalizeWord</KeyboardFlags>
+                            </x:Arguments>
+                        </Keyboard>
+                    </Entry.Keyboard>
+                </Entry>
 
                 <Label
                     Grid.Row="3"
@@ -74,7 +83,11 @@
                     Grid.Column="0"
                     Keyboard="Numeric"
                     MaxLength="50"
-                    Text="{Binding Cep}" />
+                    Text="{Binding Cep}">
+                    <Entry.Behaviors>
+                        <toolkit:MaskedBehavior Mask="00.000-000" UnmaskedCharacter="0" />
+                    </Entry.Behaviors>
+                </Entry>
 
                 <Label
                     Grid.Row="7"
@@ -88,8 +101,16 @@
                     Grid.Row="8"
                     Grid.Column="0"
                     MaxLength="50"
-                    Text="{Binding Endereco}" />
-
+                    Text="{Binding Endereco}">
+                    <Entry.Keyboard>
+                        <Keyboard x:FactoryMethod="Create">
+                            <x:Arguments>
+                                <KeyboardFlags>CapitalizeWord</KeyboardFlags>
+                            </x:Arguments>
+                        </Keyboard>
+                    </Entry.Keyboard>
+                </Entry>
+                
                 <Label
                     Grid.Row="9"
                     Grid.Column="0"
@@ -102,7 +123,7 @@
                     Grid.Row="10"
                     Grid.Column="0"
                     Keyboard="Numeric"
-                    MaxLength="50"
+                    MaxLength="10"
                     Text="{Binding NumeroEndereco}" />
 
                 <Button

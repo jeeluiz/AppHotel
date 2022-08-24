@@ -34,7 +34,7 @@
                     HorizontalOptions="CenterAndExpand"
                     HorizontalTextAlignment="Center"
                     Text="{Binding Nome}"
-                    TextColor="Black" />
+                    TextColor="Red" />
 
 
                 <Label
@@ -96,7 +96,7 @@
                     Grid.Column="0"
                     FontSize="Title"
                     HorizontalOptions="CenterAndExpand"
-                    Text="Data Check-Out"
+                    Text="Hora Check-In"
                     TextColor="Black"
                     TextDecorations="Underline" />
 
@@ -106,7 +106,7 @@
                     FontSize="Medium"
                     HorizontalOptions="Center"
                     HorizontalTextAlignment="Center"
-                    Text="{Binding DataCheckOut, StringFormat='{0:dd/MM/yyyy}'}"
+                    Text="{Binding HoraCheckIn, StringFormat='{0:HH:mm}'}"
                     TextColor="Red" />
 
                 <Label
@@ -114,7 +114,7 @@
                     Grid.Column="0"
                     FontSize="Title"
                     HorizontalOptions="CenterAndExpand"
-                    Text="Hora Check-In"
+                    Text="Data Check-Out"
                     TextColor="Black"
                     TextDecorations="Underline" />
 
@@ -124,7 +124,7 @@
                     FontSize="Medium"
                     HorizontalOptions="Center"
                     HorizontalTextAlignment="Center"
-                    Text="{Binding HoraCheckIn, StringFormat='{0:HH:mm:ss}'}"
+                    Text="{Binding DataCheckOut, StringFormat='{0:dd/MM/yyyy}'}"
                     TextColor="Red" />
 
                 <Label
@@ -142,7 +142,7 @@
                     FontSize="Medium"
                     HorizontalOptions="Center"
                     HorizontalTextAlignment="Center"
-                    Text="{Binding HoraCheckOut, StringFormat='{0:HH:mm:ss}'}"
+                    Text="{Binding HoraCheckOut, StringFormat='{0:HH:mm}'}"
                     TextColor="Red" />
 
                 <Label

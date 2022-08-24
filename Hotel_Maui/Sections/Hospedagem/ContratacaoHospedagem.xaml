@@ -4,6 +4,7 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:ViewModels="clr-namespace:Hotel_Maui.Sections.Hospedagem"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     Title="Contratação Hospedagem"
     x:DataType="ViewModels:ContratacaoHospedagemViewModel"
     BackgroundColor="{StaticResource Primary}">
@@ -25,7 +26,11 @@
                     HorizontalTextAlignment="Center"
                     Keyboard="Numeric"
                     ReturnType="Done"
-                    Text="{Binding ParametroBusca}" />
+                    Text="{Binding ParametroBusca}">
+                     <Entry.Behaviors>
+                    <toolkit:MaskedBehavior Mask="000.000.000-00" UnmaskedCharacter="0" />
+                    </Entry.Behaviors>
+                </Entry>
 
                 <Button
                     Grid.Row="1"

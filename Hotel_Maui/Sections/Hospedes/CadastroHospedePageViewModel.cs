@@ -13,9 +13,10 @@ namespace Hotel_Maui.Sections.Hospedes
         public event PropertyChangedEventHandler PropertyChanged;
 
         int id_parametro;
-
         private string nome, cpf, cep, numeroEndereco, endereco;
         private Guid id;
+
+      
 
         public string PegarIdNavegacao
         {
@@ -111,7 +112,7 @@ namespace Hotel_Maui.Sections.Hospedes
                 }
             });
         }
-
+      
 
         public ICommand BotaoSalvar
         {

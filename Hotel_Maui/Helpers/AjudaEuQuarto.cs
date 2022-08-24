@@ -19,24 +19,24 @@ namespace Hotel_Maui.Helpers
                     {
                         Id = tipo,
                         Descricao = "Suite Simples",
-                        ValorDiariaAdulto = 50.0,
-                        ValorDiariaCrianca = 12.5
+                        ValorDiariaAdulto = 80.0,
+                        ValorDiariaCrianca = 40.5
                     };
                 case TipoQuarto.Luxo:
                     return new CategoriaQuarto()
                     {
                         Id = tipo,
                         Descricao = "Suite Luxo",
-                        ValorDiariaAdulto = 80.0,
-                        ValorDiariaCrianca = 40.0
+                        ValorDiariaAdulto = 150.0,
+                        ValorDiariaCrianca = 75.0
                     };
                 case TipoQuarto.SuperLuxo:
                     return new CategoriaQuarto()
                     {
                         Id = tipo,
                         Descricao = "Suite Super Luxo",
-                        ValorDiariaAdulto = 110.0,
-                        ValorDiariaCrianca = 55.0
+                        ValorDiariaAdulto = 500.0,
+                        ValorDiariaCrianca = 270.0
                     };
                 default:
                     throw new ArgumentOutOfRangeException();
